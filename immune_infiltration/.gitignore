@@ -1,0 +1,11 @@
+# 运行产物；目录结构由 .gitkeep 保留
+result/*
+!result/.gitkeep
+report/*
+!report/.gitkeep
+logs/*
+!logs/.gitkeep
+
+quality_control_report.txt
+.20*
+Rplots.pdf

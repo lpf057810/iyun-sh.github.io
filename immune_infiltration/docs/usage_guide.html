@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免疫浸润分析工具使用说明 | Immune Infiltration Toolkit</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #27ae60;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --code-bg: #f4f4f4;
+            --border-color: #dee2e6;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--primary-color);
+            background-color: var(--bg-color);
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar h1 { font-size: 1.5rem; font-weight: 600; }
+        .navbar-subtitle { font-size: 0.9rem; opacity: 0.8; }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 250px;
+            height: calc(100vh - 80px);
+            background: white;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
+        }
+        .sidebar h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 1rem; padding: 0 0.5rem; }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin-bottom: 0.3rem; }
+        .sidebar a { display: block; padding: 0.5rem 0.75rem; color: var(--primary-color); text-decoration: none; border-radius: 5px; font-size: 0.9rem; transition: all 0.2s; }
+        .sidebar a:hover { background-color: var(--secondary-color); color: white; }
+        .main-content { margin-left: 250px; padding: 100px 2rem 2rem 2rem; max-width: 900px; }
+        .section { background: white; border-radius: 10px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .section h2 { color: var(--secondary-color); border-bottom: 3px solid var(--secondary-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .section h3 { color: var(--primary-color); margin: 1.5rem 0 1rem 0; font-size: 1.2rem; }
+        pre { background: var(--code-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 1rem 0; font-family: "Fira Code", "Monaco", "Consolas", monospace; font-size: 0.9rem; line-height: 1.6; }
+        code { background: var(--code-bg); padding: 0.2rem 0.4rem; border-radius: 3px; font-family: "Fira Code", "Monaco", "Consolas", monospace; font-size: 0.85rem; }
+        pre code { background: none; padding: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background-color: var(--primary-color); color: white; font-weight: 600; }
+        tr:hover { background-color: #f1f3f4; }
+        .tip, .warning, .error { padding: 1rem 1.5rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid; }
+        .tip { background: #e8f5e9; border-color: var(--success-color); }
+        .tip::before { content: "💡 提示: "; font-weight: bold; color: var(--success-color); }
+        .warning { background: #fff3e0; border-color: var(--warning-color); }
+        .warning::before { content: "⚠️ 注意: "; font-weight: bold; color: var(--warning-color); }
+        .method-card { background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 10px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid var(--secondary-color); }
+        .method-card h4 { color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 0.5rem; }
+        .badge-r { background: #1976d2; color: white; }
+        .badge-py { background: #ff9800; color: white; }
+        .badge-req { background: var(--accent-color); color: white; }
+        .badge-opt { background: #757575; color: white; }
+        .directory-tree { font-family: monospace; background: var(--code-bg); padding: 1rem; border-radius: 8px; margin: 1rem 0; }
+        .directory-tree .folder { color: var(--secondary-color); font-weight: bold; }
+        .directory-tree .file { color: #666; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main-content { margin-left: 0; padding: 100px 1rem 1rem 1rem; } }
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: transform 0.2s; text-decoration: none; }
+        .back-to-top:hover { transform: translateY(-3px); }
+        .footer { text-align: center; padding: 2rem; color: #888; font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🧬 免疫浸润分析工具 | Immune Infiltration Toolkit</h1>
+        <p class="navbar-subtitle">支持 8 种主流免疫浸润分析方法的综合分析平台</p>
+    </nav>
+
+    <aside class="sidebar">
+        <h3>目录</h3>
+        <ul>
+            <li><a href="#overview">项目概述</a></li>
+            <li><a href="#methods">分析方法</a></li>
+            <li><a href="#installation">安装指南</a></li>
+            <li><a href="#quickstart">快速开始</a></li>
+            <li><a href="#input">输入格式</a></li>
+            <li><a href="#output">输出结果</a></li>
+            <li><a href="#python">Python 控制脚本</a></li>
+            <li><a href="#faq">常见问题</a></li>
+        </ul>
+        <h3>分析方法</h3>
+        <ul>
+            <li><a href="#method-cibersort">CIBERSORT</a></li>
+            <li><a href="#method-xcell">xCell</a></li>
+            <li><a href="#method-estimate">ESTIMATE</a></li>
+            <li><a href="#method-ssgsea">ssGSEA</a></li>
+            <li><a href="#method-timer">TIMER</a></li>
+            <li><a href="#method-epic">EPIC</a></li>
+            <li><a href="#method-mcpcounter">MCPcounter</a></li>
+            <li><a href="#method-ips">IPS</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <!-- 项目概述 -->
+        <section id="overview" class="section">
+            <h2>📋 项目概述</h2>
+            <p>免疫浸润分析工具是一个基于 R 语言开发的多算法免疫细胞浸润分析平台。整合了 8 种主流的免疫浸润分析方法，提供统一的数据输入接口和标准化的分析流程。</p>
+
+            <h3>核心功能</h3>
+            <ul>
+                <li>✅ 支持 8 种主流免疫浸润分析算法</li>
+                <li>✅ 自动进行统计差异分析（Wilcoxon 检验）</li>
+                <li>✅ 支持基因表达与免疫细胞相关性分析</li>
+                <li>✅ 自动生成堆叠柱状图和箱线图</li>
+                <li>✅ 支持缓存机制，避免重复计算</li>
+                <li>✅ Python 主控脚本支持并行执行</li>
+            </ul>
+
+            <h3>目录结构</h3>
+            <div class="directory-tree">
+<span class="folder">immune_infiltration/</span>
+├── <span class="folder">config/</span>
+│   ├── <span class="file">config.ini</span>              # 配置文件
+│   └── <span class="file">config.example.ini</span>    # 示例配置
+├── <span class="folder">docs/</span>
+│   └── <span class="file">usage_guide.html</span>      # 使用说明
+├── <span class="folder">main/</span>
+│   ├── <span class="folder">lib/</span>
+│   │   └── <span class="file">immune_functions.R</span># 函数库
+│   └── <span class="folder">scripts/</span>
+│       ├── <span class="file">run_immune_infiltration.py</span>
+│       ├── <span class="file">cibersort.R</span>
+│       ├── <span class="file">xcell.R</span>
+│       ├── <span class="file">estimate.R</span>
+│       ├── <span class="file">ssgsea.R</span>
+│       ├── <span class="file">timer.R</span>
+│       ├── <span class="file">epic.R</span>
+│       ├── <span class="file">mcpcounter.R</span>
+│       └── <span class="file">ips.R</span>
+└── <span class="folder">test/</span>
+    ├── <span class="folder">input/</span>
+    └── <span class="folder">output/</span>
+            </div>
+        </section>
+
+        <!-- 分析方法 -->
+        <section id="methods" class="section">
+            <h2>🔬 分析方法</h2>
+
+            <table>
+                <tr><th>方法</th><th>输出类型</th><th>细胞类型数</th><th>特殊要求</th></tr>
+                <tr><td><a href="#method-cibersort">CIBERSORT</a></td><td>比例 (%)</td><td>22</td><td>-</td></tr>
+                <tr><td><a href="#method-xcell">xCell</a></td><td>富集评分</td><td>64</td><td>-</td></tr>
+                <tr><td><a href="#method-estimate">ESTIMATE</a></td><td>评分</td><td>3</td><td>-</td></tr>
+                <tr><td><a href="#method-ssgsea">ssGSEA</a></td><td>富集评分</td><td>自定义</td><td>需要签名文件</td></tr>
+                <tr><td><a href="#method-timer">TIMER</a></td><td>浸润水平</td><td>6</td><td>需要肿瘤类型</td></tr>
+                <tr><td><a href="#method-epic">EPIC</a></td><td>比例</td><td>8</td><td>-</td></tr>
+                <tr><td><a href="#method-mcpcounter">MCPcounter</a></td><td>丰度评分</td><td>10</td><td>-</td></tr>
+                <tr><td><a href="#method-ips">IPS</a></td><td>免疫表型评分</td><td>4</td><td>-</td></tr>
+            </table>
+
+            <div id="method-cibersort" class="method-card">
+                <h4>CIBERSORT</h4>
+                <p><strong>原理：</strong>基于支持向量回归（SVR）的反卷积算法，估算 22 种免疫细胞类型的相对比例。</p>
+                <p><strong>适用场景：</strong>肿瘤微环境分析、免疫细胞比例量化</p>
+                <p><strong>特殊参数：</strong><code>-p/--perm</code> 排列次数（默认 1000）</p>
+            </div>
+
+            <div id="method-xcell" class="method-card">
+                <h4>xCell</h4>
+                <p><strong>原理：</strong>基于基因集富集的细胞类型评分方法，涵盖 64 种细胞类型。</p>
+                <p><strong>适用场景：</strong>广泛的细胞类型分析、基质细胞评估</p>
+                <p><strong>特殊参数：</strong><code>--arrays</code> 是否为芯片数据</p>
+            </div>
+
+            <div id="method-estimate" class="method-card">
+                <h4>ESTIMATE</h4>
+                <p><strong>原理：</strong>基于基因签名计算肿瘤微环境评分。</p>
+                <p><strong>输出：</strong>ImmuneScore、StromalScore、ESTIMATEScore</p>
+                <p><strong>适用场景：</strong>肿瘤纯度评估、微环境整体评价</p>
+            </div>
+
+            <div id="method-ssgsea" class="method-card">
+                <h4>ssGSEA</h4>
+                <p><strong>原理：</strong>单样本基因集富集分析。</p>
+                <p><strong>适用场景：</strong>自定义免疫细胞签名分析</p>
+                <p><strong>特殊参数：</strong><code>--signature</code> 基因签名文件（<span class="badge badge-req">必需</span>）</p>
+            </div>
+
+            <div id="method-timer" class="method-card">
+                <h4>TIMER</h4>
+                <p><strong>原理：</strong>基于约束反卷积的免疫浸润估算。</p>
+                <p><strong>输出：</strong>6 种主要免疫细胞浸润水平</p>
+                <p><strong>特殊参数：</strong><code>--tissue</code> 肿瘤类型（<span class="badge badge-req">必需</span>，如 LUAD、BRCA）</p>
+            </div>
+
+            <div id="method-epic" class="method-card">
+                <h4>EPIC</h4>
+                <p><strong>原理：</strong>使用约束最小二乘法估算细胞比例。</p>
+                <p><strong>输出：</strong>8 种细胞类型的绝对比例</p>
+                <p><strong>适用场景：</strong>肿瘤与正常组织比较</p>
+            </div>
+
+            <div id="method-mcpcounter" class="method-card">
+                <h4>MCPcounter</h4>
+                <p><strong>原理：</strong>基于标记基因的微环境细胞种群计数。</p>
+                <p><strong>输出：</strong>10 种细胞类型的丰度评分</p>
+                <p><strong>适用场景：</strong>多种细胞类型的相对丰度比较</p>
+            </div>
+
+            <div id="method-ips" class="method-card">
+                <h4>IPS</h4>
+                <p><strong>原理：</strong>免疫表型评分，评估免疫治疗响应潜力。</p>
+                <p><strong>输出：</strong>MHC、EC、SC、CP 四个维度的评分</p>
+                <p><strong>适用场景：</strong>免疫治疗响应预测</p>
+            </div>
+        </section>
+
+        <!-- 安装指南 -->
+        <section id="installation" class="section">
+            <h2>🔧 安装指南</h2>
+
+            <h3>R 包依赖</h3>
+            <pre><code># 设置镜像
+options(repos = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN"))
+options(BioC_mirror = "https://mirrors.tuna.tsinghua.edu.cn/bioconductor")
+
+# 安装 CRAN 包
+install.packages(c(
+  "optparse", "data.table", "tidyverse", "dplyr",
+  "ggplot2", "rstatix", "RColorBrewer", "qs2", "glue",
+  "patchwork", "WGCNA"
+))
+
+# 安装 Bioconductor 包
+if (!require("BiocManager")) install.packages("BiocManager")
+BiocManager::install(c("IOBR", "GSVA"))
+
+# 可选：ggcor（用于相关性热图）
+# devtools::install_github("houyunhuang/ggcor")</code></pre>
+
+            <h3>Python 依赖（可选）</h3>
+            <pre><code>pip install configparser</code></pre>
+        </section>
+
+        <!-- 快速开始 -->
+        <section id="quickstart" class="section">
+            <h2>🚀 快速开始</h2>
+
+            <h3>方式一：使用 R 脚本</h3>
+            <pre><code># 进入脚本目录
+cd immune_infiltration/main/scripts
+
+# 运行 CIBERSORT 分析
+Rscript cibersort.R \
+  --expr ../../test/input/expr_tpm.csv \
+  --group ../../test/input/group.csv \
+  --output ../../test/output/CIBERSORT \
+  --perm 1000
+
+# 运行 xCell 分析
+Rscript xcell.R \
+  --expr ../../test/input/expr_tpm.csv \
+  --group ../../test/input/group.csv \
+  --output ../../test/output/xCell</code></pre>
+
+            <h3>方式二：使用 Python 主控脚本</h3>
+            <pre><code># 修改配置文件
+vim config/config.ini
+
+# 运行所有方法
+python main/scripts/run_immune_infiltration.py --all
+
+# 运行指定方法
+python main/scripts/run_immune_infiltration.py \
+  --methods cibersort xcell estimate \
+  --workers 3
+
+# 并行运行（使用 4 个进程）
+python main/scripts/run_immune_infiltration.py --all --workers 4</code></pre>
+        </section>
+
+        <!-- 输入格式 -->
+        <section id="input" class="section">
+            <h2>📥 输入格式</h2>
+
+            <h3>1. 表达矩阵 (expr_tpm.csv)</h3>
+            <p>CSV 格式，第一列为基因符号（SYMBOL），其余列为样本表达值。</p>
+            <pre><code>SYMBOL,Sample1,Sample2,Sample3,…
+TP53,12.5,15.3,11.8,…
+EGFR,8.2,9.1,7.5,…
+MYC,25.6,28.4,22.1,…
+...</code></pre>
+
+            <h3>2. 分组信息 (group.csv)</h3>
+            <p>CSV 格式，包含样本 ID 和分组信息。</p>
+            <pre><code>ID,group
+Sample1,Tumor
+Sample2,Tumor
+Sample3,Normal
+Sample4,Normal
+...</code></pre>
+
+            <h3>3. 基因列表 (可选)</h3>
+            <p>用于相关性分析，CSV 格式，包含 gene 列。</p>
+            <pre><code>gene
+TP53
+EGFR
+MYC
+...</code></pre>
+
+            <h3>4. 签名文件 (ssGSEA 专用)</h3>
+            <p>GMT 格式或两列 CSV 格式。</p>
+            <pre><code>CellType,Gene
+T_cells,CD3D
+T_cells,CD3E
+B_cells,CD19
+B_cells,MS4A1
+...</code></pre>
+        </section>
+
+        <!-- 输出结果 -->
+        <section id="output" class="section">
+            <h2>📤 输出结果</h2>
+
+            <h3>每个方法的输出文件</h3>
+            <table>
+                <tr><th>文件名</th><th>描述</th></tr>
+                <tr><td><code>01.*_res.csv</code></td><td>免疫浸润原始结果</td></tr>
+                <tr><td><code>01.*.stacked_bar.pdf/png</code></td><td>堆叠柱状图</td></tr>
+                <tr><td><code>02.stat.*.csv</code></td><td>统计检验结果（Wilcoxon）</td></tr>
+                <tr><td><code>03.DE.*.boxplot.pdf/png</code></td><td>分组比较箱线图</td></tr>
+                <tr><td><code>04.Correlation.gene.csv</code></td><td>基因-免疫细胞相关性（可选）</td></tr>
+                <tr><td><code>04.Correlation.gene.pdf/png</code></td><td>相关性热图（可选）</td></tr>
+            </table>
+
+            <h3>统计结果说明</h3>
+            <table>
+                <tr><th>列名</th><th>描述</th></tr>
+                <tr><td>ImmuneCell</td><td>免疫细胞类型</td></tr>
+                <tr><td>group1</td><td>对照组名称</td></tr>
+                <tr><td>group2</td><td>实验组名称</td></tr>
+                <tr><td>n1, n2</td><td>各组样本数</td></tr>
+                <tr><td>statistic</td><td>统计量</td></tr>
+                <tr><td>p</td><td>p 值</td></tr>
+                <tr><td>p.adj</td><td>校正后 p 值（BH 方法）</td></tr>
+                <tr><td>p.signif</td><td>显著性标记 (*, **, ***, ns)</td></tr>
+            </table>
+        </section>
+
+        <!-- Python 控制脚本 -->
+        <section id="python" class="section">
+            <h2>🐍 Python 控制脚本</h2>
+
+            <h3>命令行参数</h3>
+            <table>
+                <tr><th>参数</th><th>说明</th><th>默认值</th></tr>
+                <tr><td><code>--methods</code></td><td>指定分析方法</td><td>所有方法</td></tr>
+                <tr><td><code>--all</code></td><td>运行所有方法</td><td>False</td></tr>
+                <tr><td><code>--workers</code></td><td>并行进程数</td><td>1</td></tr>
+                <tr><td><code>--force</code></td><td>强制重新计算</td><td>False</td></tr>
+                <tr><td><code>--dry-run</code></td><td>仅打印命令不执行</td><td>False</td></tr>
+            </table>
+
+            <h3>配置文件示例 (config.ini)</h3>
+            <pre><code>[input]
+expr = test/input/expr_tpm.csv
+group = test/input/group.csv
+genes = test/input/gene_list.csv
+
+[output]
+base_dir = test/output
+
+[parameters]
+# CIBERSORT
+perm = 1000
+
+# ssGSEA（必需）
+signature = config/immune_signature.csv
+
+# TIMER（必需）
+tissue = LUAD
+
+# 通用
+arrays = false
+control = Normal
+cache = cache</code></pre>
+        </section>
+
+        <!-- 常见问题 -->
+        <section id="faq" class="section">
+            <h2>❓ 常见问题</h2>
+
+            <h3>Q1: 找不到 group_color 变量？</h3>
+            <div class="warning">
+                确保加载了正确的函数库：<code>source("../lib/immune_functions.R")</code>
+            </div>
+
+            <h3>Q2: CIBERSORT 运行很慢？</h3>
+            <div class="tip">
+                CIBERSORT 默认进行 1000 次排列，可以使用 <code>-p 100</code> 减少排列次数进行快速测试。正式分析建议使用 1000。
+            </div>
+
+            <h3>Q3: TIMER 需要 tissue 参数？</h3>
+            <div class="warning">
+                TIMER 方法需要指定肿瘤类型缩写，如：
+                <ul>
+                    <li>LUAD - 肺腺癌</li>
+                    <li>BRCA - 乳腺癌</li>
+                    <li>COAD - 结肠癌</li>
+                    <li>PRAD - 前列腺癌</li>
+                </ul>
+            </div>
+
+            <h3>Q4: 如何选择分析方法？</h3>
+            <div class="tip">
+                <ul>
+                    <li><strong>细胞比例：</strong>CIBERSORT、EPIC</li>
+                    <li><strong>富集评分：</strong>xCell、ssGSEA、MCPcounter</li>
+                    <li><strong>整体评分：</strong>ESTIMATE</li>
+                    <li><strong>免疫治疗：</strong>IPS</li>
+                    <li><strong>推荐：</strong>多方法联合使用，取交集验证</li>
+                </ul>
+            </div>
+
+            <h3>Q5: 缓存机制如何工作？</h3>
+            <div class="tip">
+                结果会缓存到 <code>cache/</code> 目录。如需重新计算，使用 <code>--force</code> 参数或删除缓存文件。
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>免疫浸润分析工具 v1.0 | 更新日期: 2026-02-15</p>
+            <p>如有问题，请提交 Issue 或联系项目团队</p>
+        </footer>
+    </main>
+
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+    </script>
+</body>
+</html>

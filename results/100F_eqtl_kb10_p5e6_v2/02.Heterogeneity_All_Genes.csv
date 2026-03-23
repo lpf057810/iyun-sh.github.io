@@ -1,0 +1,89 @@
+"Exposure","Outcome","Method","Heterogeneity_Q","Q_df","Q_P_value","Egger_intercept_pval","MR_PRESSO_global_p"
+"ENSG00000072310","Nonalcoholic fatty liver disease","Inverse variance weighted",61.6163428024999,101,0.999303994154622,"0.860984",1
+"ENSG00000072310","Nonalcoholic fatty liver disease","MR Egger",61.5855167602823,100,0.999104429092021,"0.860984",1
+"ENSG00000122971","Nonalcoholic fatty liver disease","Inverse variance weighted",4.74598949987904,21,0.999914352014982,"0.161246",1
+"ENSG00000122971","Nonalcoholic fatty liver disease","MR Egger",2.62959960340373,20,0.999998704407912,"0.161246",1
+"ENSG00000131791","Nonalcoholic fatty liver disease","Inverse variance weighted",29.2582692409776,42,0.931585836964471,"0.00763403",0.952
+"ENSG00000131791","Nonalcoholic fatty liver disease","MR Egger",21.3833357853448,41,0.995092432500566,"0.00763403",0.952
+"ENSG00000185000","Nonalcoholic fatty liver disease","Inverse variance weighted",29.6771659209727,57,0.998957059151321,"0.139407",0.999
+"ENSG00000185000","Nonalcoholic fatty liver disease","MR Egger",27.4291960784065,56,0.999533433482995,"0.139407",0.999
+"ENSG00000073756","Nonalcoholic fatty liver disease","Inverse variance weighted",62.212056028739,57,0.295961570519008,"0.17113",0.348
+"ENSG00000073756","Nonalcoholic fatty liver disease","MR Egger",60.1476858301351,56,0.328047928245512,"0.17113",0.348
+"ENSG00000169710","Nonalcoholic fatty liver disease","Inverse variance weighted",5.33794265503447,28,0.999999102210583,"0.328629",1
+"ENSG00000169710","Nonalcoholic fatty liver disease","MR Egger",4.34815969398362,27,0.999999793330626,"0.328629",1
+"ENSG00000108786","Nonalcoholic fatty liver disease","Inverse variance weighted",20.3146279098601,38,0.991625632551638,"0.0766045",0.993
+"ENSG00000108786","Nonalcoholic fatty liver disease","MR Egger",16.9963145575265,37,0.998018946316552,"0.0766045",0.993
+"ENSG00000100031","Nonalcoholic fatty liver disease","Inverse variance weighted",13.5578224453952,31,0.997223949025074,"0.59785",0.996
+"ENSG00000100031","Nonalcoholic fatty liver disease","MR Egger",13.2735608906517,30,0.996430836495365,"0.59785",0.996
+"ENSG00000134824","Nonalcoholic fatty liver disease","Inverse variance weighted",63.4065593721135,81,0.925616713723941,"0.00053491",0.926
+"ENSG00000134824","Nonalcoholic fatty liver disease","MR Egger",50.3853535833964,80,0.996098277023894,"0.00053491",0.926
+"ENSG00000100300","Nonalcoholic fatty liver disease","Inverse variance weighted",29.59544317449,48,0.983080055760925,"0.265172",0.994
+"ENSG00000100300","Nonalcoholic fatty liver disease","MR Egger",28.3237409427012,47,0.985839018860052,"0.265172",0.994
+"ENSG00000131473","Nonalcoholic fatty liver disease","Inverse variance weighted",48.5923438769548,31,0.0230706716693283,"8.17737e-05",0.032
+"ENSG00000131473","Nonalcoholic fatty liver disease","MR Egger",27.8516732663382,30,0.57829670885276,"8.17737e-05",0.032
+"ENSG00000112237","Nonalcoholic fatty liver disease","Inverse variance weighted",52.5566345868572,34,0.0220085754639668,"0.00126896",0.026
+"ENSG00000112237","Nonalcoholic fatty liver disease","MR Egger",38.1854832661109,33,0.24548094158021,"0.00126896",0.026
+"ENSG00000145675","Nonalcoholic fatty liver disease","Inverse variance weighted",23.909050170308,43,0.991899712550473,"0.686282",0.993
+"ENSG00000145675","Nonalcoholic fatty liver disease","MR Egger",23.743632224161,42,0.989591348266442,"0.686282",0.993
+"ENSG00000198431","Nonalcoholic fatty liver disease","Inverse variance weighted",24.9671828485577,51,0.99919646515673,"0.00457966",1
+"ENSG00000198431","Nonalcoholic fatty liver disease","MR Egger",16.1529435429628,50,0.99999861690958,"0.00457966",1
+"ENSG00000079459","Nonalcoholic fatty liver disease","Inverse variance weighted",61.3600154814978,94,0.996319452344181,"0.000130819",0.997
+"ENSG00000079459","Nonalcoholic fatty liver disease","MR Egger",45.425435542124,93,0.999992006763689,"0.000130819",0.997
+"ENSG00000112304","Nonalcoholic fatty liver disease","Inverse variance weighted",32.2596469478717,41,0.833662014564635,"0.272764",0.838
+"ENSG00000112304","Nonalcoholic fatty liver disease","MR Egger",31.0230350081873,40,0.844780850831826,"0.272764",0.838
+"ENSG00000109819","Nonalcoholic fatty liver disease","Inverse variance weighted",39.914773664524,47,0.758468875616475,"0.631042",0.76
+"ENSG00000109819","Nonalcoholic fatty liver disease","MR Egger",39.6810112828019,46,0.732778496028332,"0.631042",0.76
+"ENSG00000126821","Nonalcoholic fatty liver disease","Inverse variance weighted",1.15482929322935,15,0.999999302551233,"0.515459",1
+"ENSG00000126821","Nonalcoholic fatty liver disease","MR Egger",0.709603849892009,14,0.999999896965668,"0.515459",1
+"ENSG00000166311","Nonalcoholic fatty liver disease","Inverse variance weighted",2.53501515497069,6,0.864528513469779,"0.367816",0.879
+"ENSG00000166311","Nonalcoholic fatty liver disease","MR Egger",1.5557288672728,5,0.906550504373062,"0.367816",0.879
+"ENSG00000090661","Nonalcoholic fatty liver disease","Inverse variance weighted",26.1415409283136,31,0.714514562171802,"0.10827",0.783
+"ENSG00000090661","Nonalcoholic fatty liver disease","MR Egger",23.4012034939766,30,0.798413572725595,"0.10827",0.783
+"ENSG00000106546","Nonalcoholic fatty liver disease","Inverse variance weighted",34.9604189985795,57,0.990575631420681,"0.0934793",0.993
+"ENSG00000106546","Nonalcoholic fatty liver disease","MR Egger",32.0487115817932,56,0.995812565143178,"0.0934793",0.993
+"ENSG00000079435","Nonalcoholic fatty liver disease","Inverse variance weighted",5.63378121545318,37,0.999999999473138,"0.453897",1
+"ENSG00000079435","Nonalcoholic fatty liver disease","MR Egger",5.06052992104609,36,0.999999999740978,"0.453897",1
+"ENSG00000125505","Nonalcoholic fatty liver disease","Inverse variance weighted",19.2134710328607,14,0.156951721218801,"0.524809",0.201
+"ENSG00000125505","Nonalcoholic fatty liver disease","MR Egger",18.6023210604997,13,0.135959258763983,"0.524809",0.201
+"ENSG00000084754","Nonalcoholic fatty liver disease","Inverse variance weighted",39.3269570752811,46,0.74603738808084,"8.89235e-06",0.773
+"ENSG00000084754","Nonalcoholic fatty liver disease","MR Egger",14.2250251953453,45,0.999996795258443,"8.89235e-06",0.773
+"ENSG00000198911","Nonalcoholic fatty liver disease","Inverse variance weighted",7.73858182342025,15,0.933835021241399,"0.217703",0.944
+"ENSG00000198911","Nonalcoholic fatty liver disease","MR Egger",6.07257597572439,14,0.964628886953206,"0.217703",0.944
+"ENSG00000233276","Nonalcoholic fatty liver disease","Inverse variance weighted",45.6856428317933,57,0.858958714407404,"0.56047",0.889
+"ENSG00000233276","Nonalcoholic fatty liver disease","MR Egger",45.3426677275194,56,0.844944511147667,"0.56047",0.889
+"ENSG00000121769","Nonalcoholic fatty liver disease","Inverse variance weighted",6.98820094683564,17,0.983701179120138,"0.0535889",0.98
+"ENSG00000121769","Nonalcoholic fatty liver disease","MR Egger",2.64672692138983,16,0.999927381886818,"0.0535889",0.98
+"ENSG00000099194","Nonalcoholic fatty liver disease","Inverse variance weighted",49.7344224174957,51,0.523983793384353,"0.00200752",0.569
+"ENSG00000099194","Nonalcoholic fatty liver disease","MR Egger",39.1060731826808,50,0.867010706398006,"0.00200752",0.569
+"ENSG00000066322","Nonalcoholic fatty liver disease","Inverse variance weighted",10.3277105302242,35,0.999984231233923,"0.0521872",1
+"ENSG00000066322","Nonalcoholic fatty liver disease","MR Egger",6.27918535837998,34,0.999999958834181,"0.0521872",1
+"ENSG00000105974","Nonalcoholic fatty liver disease","Inverse variance weighted",8.79356392451084,33,0.999992187534214,"0.866859",1
+"ENSG00000105974","Nonalcoholic fatty liver disease","MR Egger",8.7650023953338,32,0.999985194307586,"0.866859",1
+"ENSG00000170522","Nonalcoholic fatty liver disease","Inverse variance weighted",25.3788564696561,24,0.385413192067264,"0.469522",0.409
+"ENSG00000170522","Nonalcoholic fatty liver disease","MR Egger",24.7957980708401,23,0.360899338612453,"0.469522",0.409
+"ENSG00000069667","Nonalcoholic fatty liver disease","Inverse variance weighted",15.8058951977201,20,0.728590822232407,"0.455794",0.777
+"ENSG00000069667","Nonalcoholic fatty liver disease","MR Egger",15.2262390584575,19,0.708113726070727,"0.455794",0.777
+"ENSG00000131408","Nonalcoholic fatty liver disease","Inverse variance weighted",0.575753013591318,3,0.901960029749603,"0.705578",0.91
+"ENSG00000131408","Nonalcoholic fatty liver disease","MR Egger",0.385929629517119,2,0.824510984246792,"0.705578",0.91
+"ENSG00000172531","Nonalcoholic fatty liver disease","Inverse variance weighted",3.61580812276453,15,0.99874882519375,"0.524406",0.998
+"ENSG00000172531","Nonalcoholic fatty liver disease","MR Egger",3.18954654884086,14,0.998688651891626,"0.524406",0.998
+"ENSG00000108846","Nonalcoholic fatty liver disease","Inverse variance weighted",154.02109369022,108,0.00242944664007556,"0.00329554",0.002
+"ENSG00000108846","Nonalcoholic fatty liver disease","MR Egger",142.024883258803,107,0.0132691172411864,"0.00329554",0.002
+"ENSG00000119927","Nonalcoholic fatty liver disease","Inverse variance weighted",0.554181055118473,5,0.990004866868091,"0.974881",0.992
+"ENSG00000119927","Nonalcoholic fatty liver disease","MR Egger",0.553058843374051,4,0.968134344653432,"0.974881",0.992
+"ENSG00000160752","Nonalcoholic fatty liver disease","Inverse variance weighted",45.6616548453979,59,0.898364388538002,"0.000300443",0.907
+"ENSG00000160752","Nonalcoholic fatty liver disease","MR Egger",30.8657131961889,58,0.998692050576119,"0.000300443",0.907
+"ENSG00000103056","Nonalcoholic fatty liver disease","Inverse variance weighted",46.5709276724844,67,0.972927188470107,"0.468101",0.951
+"ENSG00000103056","Nonalcoholic fatty liver disease","MR Egger",46.038334294886,66,0.970774424081738,"0.468101",0.951
+"ENSG00000116133","Nonalcoholic fatty liver disease","Inverse variance weighted",22.9132444340625,39,0.981193316851473,"0.00185471",0.954
+"ENSG00000116133","Nonalcoholic fatty liver disease","MR Egger",11.7160325074675,38,0.999987255427029,"0.00185471",0.954
+"ENSG00000113161","Nonalcoholic fatty liver disease","Inverse variance weighted",38.4066829207209,71,0.999448842478923,"0.0141983",0.998
+"ENSG00000113161","Nonalcoholic fatty liver disease","MR Egger",32.0808743357405,70,0.999971723217281,"0.0141983",0.998
+"ENSG00000186480","Nonalcoholic fatty liver disease","Inverse variance weighted",52.0567893277179,41,0.115455520758287,"0.561033",0.195
+"ENSG00000186480","Nonalcoholic fatty liver disease","MR Egger",51.6133866993453,40,0.103207339345992,"0.561033",0.195
+"ENSG00000125629","Nonalcoholic fatty liver disease","Inverse variance weighted",151.282618666672,82,5.04368858395765e-06,"0.426434",0.001
+"ENSG00000125629","Nonalcoholic fatty liver disease","MR Egger",150.09862622238,81,4.85139013246549e-06,"0.426434",0.001
+"ENSG00000176170","Nonalcoholic fatty liver disease","Inverse variance weighted",58.0671204979937,50,0.202456134419586,"0.178999",0.23
+"ENSG00000176170","Nonalcoholic fatty liver disease","MR Egger",55.9449052182444,49,0.230396055302634,"0.178999",0.23
+"ENSG00000213639","Nonalcoholic fatty liver disease","Inverse variance weighted",57.3455261126217,64,0.708978081217585,"0.191082",0.761
+"ENSG00000213639","Nonalcoholic fatty liver disease","MR Egger",55.5989081018918,63,0.734687226443818,"0.191082",0.761

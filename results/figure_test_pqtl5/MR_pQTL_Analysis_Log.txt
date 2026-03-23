@@ -1,0 +1,126 @@
+=== pQTL Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-20 10:21:50 
+Analysis Type: pQTL (Protein Quantitative Trait Loci)
+Total pQTL exposures to process: 1 
+Outcomes: ebi-a-GCST90091033 
+Using rsIDs from 'rsids2' column for SNP matching
+=================================================
+
+
+============================================================
+ANALYSIS [1/1]: A1BG
+File: A1BG_P04217_OID30771_v1_Inflammation_II_expo_rt.txt
+============================================================
+
+STEP 1: Reading and processing pQTL file (using rsIDs)...
+  File loaded successfully: 11 rows
+  Significant SNPs (p < 5e-8): 11 
+  Extracting rsIDs from 'rsids2' column...
+  SNPs with valid rsIDs: 11 
+  Sample rsIDs: rs2885060, rs114853328, rs45601339 
+  After EAF filter (0.01-0.99): 11 IVs
+  After F-statistic filter (> 10 ): 11 IVs
+  After removing duplicates: 11 unique IVs
+
+STEP 2: Extracting outcome data...
+  Extracting data for 11 SNP(s) from outcome(s): ebi-a-GCST90091033 
+  Found 11 SNPs in outcome(s)
+
+STEP 3: Harmonising data...
+  Successfully harmonised 11 SNPs
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method         Q    Q_pval
+1                  MR Egger  9.474232 0.3946979
+2 Inverse variance weighted 11.774538 0.3004292
+  Selected IVW Q_pval: 0.3004292 
+  No significant heterogeneity (Q_pval = 0.3 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  Scatter plot failed: invalid font type 
+  Forest plot failed: invalid font type 
+  Funnel plot failed: failed to find or load PDF CID font 
+  Leave-one-out plot failed: invalid font type 
+
+STEP 10: Saving results...
+
+✓ Analysis for A1BG completed successfully!
+
+============================================================
+STEP 4: SAVING SUCCESSFULLY ANALYZED PROTEINS LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+  Total proteins successfully analyzed: 1 
+  ✓ Successfully analyzed proteins list saved to: ./results/figure_test_pqtl5/pqtl_successful_genes.csv 
+
+  Successfully analyzed proteins ( 1 ):
+  1. A1BG
+
+============================================================
+COMPREHENSIVE pQTL MR ANALYSIS REPORT
+============================================================
+
+STUDY OVERVIEW:
+• Analysis Type: pQTL (Protein Quantitative Trait Loci)
+• Candidate genes processed: 1 
+• pQTL files found: 1812 
+• Initially matched proteins: 1 
+• Successfully analyzed: 1 
+• Failed: 0 
+• Outcomes: ebi-a-GCST90091033 
+
+ANALYSIS STATUS SUMMARY:
+
+Success 
+      1 
+
+MAIN MR RESULTS (IVW method) - SUCCESSFUL ANALYSES:
+  protein n_snps   beta     se p_value    OR         CI_95
+1    A1BG     11 0.0509 0.0576   0.377 1.052 [0.94, 1.178]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 0 / 1 
+
+OUTPUT DIRECTORY STRUCTURE:
+1. Tables directory: ./results/figure_test_pqtl5/tables 
+2. Figures directory: ./results/figure_test_pqtl5/figures 
+3. Initial matching: ./results/figure_test_pqtl5/pqtl_genes.csv 
+4. Successful analyses: ./results/figure_test_pqtl5/pqtl_successful_genes.csv 
+5. Analysis log: ./results/figure_test_pqtl5/MR_pQTL_Analysis_Log.txt 
+6. Main results summary: ./results/figure_test_pqtl5/tables/pqtl_main_results_summary.csv 
+
+============================================================
+STEP 5: GENERATING STANDARD OUTPUT FILES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Processing 1 analyses to generate summary files...
+Saving integrated results...
+  ✓ integrated_mr_results_summary.csv saved
+  ✓ significant_mr_results_summary.csv saved (empty)
+  ✓ concise_mr_results_summary.csv saved
+  ✓ mr_heterogeneity_pleiotropy_summary.csv saved
+  ✓ pqtl_successful_genes.csv verified
+
+Saving merged format files (reference text style)...
+  ✓ 01.MR_Results_All_Genes.csv saved
+  ✓ 02.Heterogeneity_All_Genes.csv saved
+  ✓ 03.Pleiotropy_All_Genes.csv saved
+  ✓ 04.MR_PRESSO_Results.csv saved
+  ✓ 05.Steiger_Direction_Results.csv saved
+  ✓ 06.Three_Filter_Results.csv saved
+
+✓ All standard output files generated successfully!
+
+Analysis completed at: 2026-03-20 10:22:20 

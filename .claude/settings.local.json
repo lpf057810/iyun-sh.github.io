@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash scripts/run_mr.sh -t eqtl -i results/100F_eqtl/eqtl_genes.csv -o results/100F_eqtl_kb10_p5e6_v2 -p 5e-6 -k 10 2>&1 | tail -15)",
+      "Bash(bash scripts/run_mr.sh -t eqtl -i results/100F_eqtl/eqtl_genes.csv -o results/100F_eqtl_kb10_p5e6_v2 -p 5e-6 -k 10 2>&1)",
+      "Bash(find /media/desk16/share/secure/MachineLearn_iyunlpf -name *.qs -o -name *.qs2)",
+      "Bash(find /media/desk16/share/secure/MR -name *.qs)",
+      "Bash(find /media/desk16/share/secure/MachineLearn_iyunlpf -name *.ini)",
+      "Bash(find /media/desk16/share/secure/MR -name *.ini)",
+      "Bash(grep -n \"sessionInfo\\\\|session_info\\\\|SessionInfo\" /media/desk16/share/secure/MR/scripts/*.R 2>/dev/null)",
+      "Bash(cd /media/desk16/share/secure/MR/scripts && Rscript -e \"source\\('generate_mr_report.R', echo=TRUE\\)\" 2>&1 | head -5; echo \"---\"; Rscript -e \"source\\('generate_combined_report.R', echo=TRUE\\)\" 2>&1 | head -5)",
+      "Bash(Rscript -e \"parse\\('generate_mr_report.R'\\)\" 2>&1 && echo \"SYNTAX OK\" && Rscript -e \"parse\\('generate_combined_report.R'\\)\" 2>&1 && echo \"SYNTAX OK\")"
+    ]
+  }
+}

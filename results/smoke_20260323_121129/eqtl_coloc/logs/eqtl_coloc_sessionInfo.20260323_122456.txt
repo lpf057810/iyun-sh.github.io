@@ -1,0 +1,65 @@
+R version 4.5.2 (2025-10-31)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 22.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=zh_CN.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=zh_CN.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=zh_CN.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=zh_CN.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: Asia/Shanghai
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] org.Hs.eg.db_3.21.0    AnnotationDbi_1.70.0   IRanges_2.42.0        
+ [4] S4Vectors_0.46.0       Biobase_2.68.0         BiocGenerics_0.54.0   
+ [7] generics_0.1.4         clusterProfiler_4.16.0 configr_0.3.5         
+[10] showtext_0.9-7         showtextdb_3.0         sysfonts_0.8.9        
+[13] ggsci_3.2.0            MRPRESSO_1.0           data.table_1.18.2.1   
+[16] dplyr_1.2.0            ggplot2_4.0.0          ieugwasr_1.1.0        
+[19] TwoSampleMR_0.7.0      optparse_1.7.5        
+
+loaded via a namespace (and not attached):
+ [1] mnormt_2.1.1            DBI_1.2.3               gson_0.1.0             
+ [4] rlang_1.1.7             magrittr_2.0.4          DOSE_4.2.0             
+ [7] RcppTOML_0.2.3          compiler_4.5.2          RSQLite_2.3.11         
+[10] systemfonts_1.2.3       png_0.1-8               vctrs_0.7.1            
+[13] reshape2_1.4.5          stringr_1.6.0           pkgconfig_2.0.3        
+[16] crayon_1.5.3            fastmap_1.2.0           XVector_0.48.0         
+[19] labeling_0.4.3          enrichplot_1.28.2       UCSC.utils_1.4.0       
+[22] ragg_1.4.0              purrr_1.1.0             bit_4.6.0              
+[25] cachem_1.1.0            aplot_0.2.5             GenomeInfoDb_1.44.3    
+[28] jsonlite_2.0.0          blob_1.2.4              BiocParallel_1.42.2    
+[31] psych_2.5.3             parallel_4.5.2          R6_2.6.1               
+[34] stringi_1.8.7           RColorBrewer_1.1-3      qs_0.27.3              
+[37] GOSemSim_2.34.0         Rcpp_1.1.1              ggtangle_0.0.6         
+[40] R.utils_2.13.0          Matrix_1.7-4            splines_4.5.2          
+[43] igraph_2.1.4            tidyselect_1.2.1        qvalue_2.40.0          
+[46] dichromat_2.0-0.1       yaml_2.3.12             stringfish_0.18.0      
+[49] codetools_0.2-20        curl_7.0.0              lattice_0.22-7         
+[52] tibble_3.3.1            plyr_1.8.9              treeio_1.32.0          
+[55] withr_3.0.2             KEGGREST_1.48.0         S7_0.2.0               
+[58] gridGraphics_0.5-1      RcppParallel_5.1.10     getopt_1.20.4          
+[61] Biostrings_2.76.0       pillar_1.11.1           ggtree_3.16.0          
+[64] ggfun_0.1.8             scales_1.4.0            tidytree_0.4.6         
+[67] RApiSerialize_0.1.4     glue_1.8.0              lazyeval_0.2.2         
+[70] tools_4.5.2             fgsea_1.34.0            fs_1.6.6               
+[73] fastmatch_1.1-6         cowplot_1.2.0           grid_4.5.2             
+[76] tidyr_1.3.1             ape_5.8-1               nlme_3.1-168           
+[79] GenomeInfoDbData_1.2.14 patchwork_1.3.2         cli_3.6.5              
+[82] textshaping_1.0.1       gtable_0.3.6            R.methodsS3_1.8.2      
+[85] yulab.utils_0.2.0       digest_0.6.39           ggrepel_0.9.6          
+[88] ggplotify_0.1.2         farver_2.1.2            memoise_2.0.1          
+[91] ini_0.3.1               R.oo_1.27.1             lifecycle_1.0.5        
+[94] httr_1.4.7              GO.db_3.21.0            bit64_4.6.0-1          

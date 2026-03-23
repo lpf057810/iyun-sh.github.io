@@ -1,0 +1,30 @@
+================================================================================
+MR Analysis Report
+================================================================================
+
+Analysis Type: eqtl
+Timestamp: 20260320_151531
+Input File: test_genes_eqtl.csv
+Output Directory: /media/desk16/share/secure/MR/results/test_filename_fix
+
+Parameters:
+  - P-value threshold: 5e-6
+  - KB distance: 10000
+  - R2 threshold: 0.001
+  - F-statistic threshold: 10
+  - EAF threshold: 0.01
+  - Colocalization: 0
+
+Result Files:
+  - tables/: Analysis results
+  - figures/: Visualization plots
+
+Log File: logs/MR_eqtl.20260320_151531.log
+Config: eqtl.config.ini
+
+================================================================================
+
+Summary:
+----------
+Total genes analyzed: 3
+Significant genes (IVW p<0.05): 3

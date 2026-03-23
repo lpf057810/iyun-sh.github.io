@@ -1,0 +1,41 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-19 19:12:34
+运行ID: 20260319_191234
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: eqtl
+输入文件: /media/desk16/share/secure/MR/test_genes_eqtl.csv
+输出目录: /media/desk16/share/secure/MR
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[19:12:34] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_eqtl.20260319_191234.log
+[19:12:34] 配置文件已生成: /media/desk16/share/secure/MR/eqtl.config.ini
+[19:12:34] 开始MR分析...
+[19:12:34]   类型: eqtl
+[19:12:34]   输入: /media/desk16/share/secure/MR/test_genes_eqtl.csv
+[19:12:34]   输出: /media/desk16/share/secure/MR
+[19:12:34]   共定位: 0
+[19:12:34]   P值阈值: 5e-8
+[19:12:34]   KB距离: 10000
+[19:12:34]   R2阈值: 0.001
+[19:12:34]   F统计量阈值: 10
+[19:12:34]   EAF阈值: 0.01
+[19:12:34]   最少SNPs: 3
+[19:12:34]   结局ID: ebi-a-GCST90091033
+[19:12:34] 输出目录已创建: /media/desk16/share/secure/MR
+[19:12:34] 开始eQTL MR分析...
+TwoSampleMR version 0.7.0 
+

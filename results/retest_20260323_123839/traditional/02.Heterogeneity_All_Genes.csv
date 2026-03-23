@@ -1,0 +1,7 @@
+"Exposure","Outcome","Method","Heterogeneity_Q","Q_df","Q_P_value","PRESSO_global_p"
+"ukb d 20480","severe traumatic brain injury, does not include concussion","MR Egger",22.9775811125384,25,0.578872545604441,NA
+"ukb d 20480","severe traumatic brain injury, does not include concussion","Inverse variance weighted",23.852666995165,26,0.584389695972559,NA
+"ukb e 20523 AFR","severe traumatic brain injury, does not include concussion","MR Egger",3.02710664757893,9,0.963210575052292,NA
+"ukb e 20523 AFR","severe traumatic brain injury, does not include concussion","Inverse variance weighted",3.02729537962045,10,0.980774389239793,NA
+"ukb e 20523 CSA","severe traumatic brain injury, does not include concussion","MR Egger",83.1583408307054,73,0.195115126948935,NA
+"ukb e 20523 CSA","severe traumatic brain injury, does not include concussion","Inverse variance weighted",83.8745893078062,74,0.202589670282926,NA

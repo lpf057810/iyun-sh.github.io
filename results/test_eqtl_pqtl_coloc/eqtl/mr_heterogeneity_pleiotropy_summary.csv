@@ -1,0 +1,3 @@
+"exposure","outcome","Method","Heterogeneity_Q","Q_df","Q_P.value","Egger_intercept","SE","P.value"
+"CCL2","ebi-a-GCST90091033","MR Egger","0.7993","8","0.9992","0.027182","0.025199","0.312161"
+"","ebi-a-GCST90091033","IVW","1.963","9","0.992","","",""

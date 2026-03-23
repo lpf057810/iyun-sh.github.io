@@ -1,0 +1,79 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-20 17:54:42
+运行ID: 20260320_175442
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: eqtl
+输入文件: test_genes_eqtl.csv
+输出目录: /media/desk16/share/secure/MR/results/test_final_check
+共定位分析: 0
+P值阈值: 5e-6
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[17:54:42] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_eqtl.20260320_175442.log
+[17:54:42] 配置文件已生成: /media/desk16/share/secure/MR/results/test_final_check/eqtl.config.ini
+[17:54:42] 开始MR分析...
+[17:54:42]   类型: eqtl
+[17:54:42]   输入: test_genes_eqtl.csv
+[17:54:42]   输出: /media/desk16/share/secure/MR/results/test_final_check
+[17:54:42]   共定位: 0
+[17:54:42]   P值阈值: 5e-6
+[17:54:42]   KB距离: 10000
+[17:54:42]   R2阈值: 0.001
+[17:54:42]   F统计量阈值: 10
+[17:54:42]   EAF阈值: 0.01
+[17:54:42]   最少SNPs: 3
+[17:54:42]   结局ID: ebi-a-GCST90091033
+[17:54:42] 输出目录已创建: /media/desk16/share/secure/MR/results/test_final_check
+[17:54:42] 开始eQTL MR分析...
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: sysfonts
+Loading required package: showtextdb

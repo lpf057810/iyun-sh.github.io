@@ -1,0 +1,331 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-20 18:37:25
+运行ID: 20260320_183725
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: pqtl
+输入文件: test_genes_pqtl.csv
+输出目录: /media/desk16/share/secure/MR/results/test_pqtl
+共定位分析: 0
+P值阈值: 5e-6
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[18:37:25] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_pqtl.20260320_183725.log
+[18:37:25] 配置文件已生成: /media/desk16/share/secure/MR/results/test_pqtl/pqtl.config.ini
+[18:37:25] 开始MR分析...
+[18:37:25]   类型: pqtl
+[18:37:25]   输入: test_genes_pqtl.csv
+[18:37:25]   输出: /media/desk16/share/secure/MR/results/test_pqtl
+[18:37:25]   共定位: 0
+[18:37:25]   P值阈值: 5e-6
+[18:37:25]   KB距离: 10000
+[18:37:25]   R2阈值: 0.001
+[18:37:25]   F统计量阈值: 10
+[18:37:25]   EAF阈值: 0.01
+[18:37:25]   最少SNPs: 3
+[18:37:25]   结局ID: ebi-a-GCST90091033
+[18:37:25]   pQTL目录: /media/desk16/iyunlpf/NAF/pqtl/data/cis_clump
+[18:37:25] 输出目录已创建: /media/desk16/share/secure/MR/results/test_pqtl
+[18:37:25] 开始pQTL MR分析...
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: sysfonts
+Loading required package: showtextdb
+
+clusterProfiler v4.16.0 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+
+Please cite:
+
+G Yu. Thirteen years of clusterProfiler. The Innovation. 2024,
+5(6):100722
+
+Attaching package: ‘clusterProfiler’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+[Token] Using token from environment variable
+
+================================================================================
+  MR pQTL Analysis
+  Started: 2026-03-20 18:37:33 
+================================================================================
+
+[Token Check] Validating OpenGWAS token...
+[Token Check] OK - Token is valid
+[Config] Parameters saved to: /media/desk16/share/secure/MR/results/test_pqtl/analysis_config.ini 
+STEP 1: Loading candidate gene list...
+  Total candidate genes: 1 
+
+STEP 2: Scanning pQTL directory and matching genes...
+  pQTL directory: /media/desk16/iyunlpf/NAF/pqtl/data/cis_clump 
+  Found 1812 pQTL files
+
+  Performing case-insensitive matching...
+    Found match: A1BG -> A1BG 
+
+  Total matches found: 1 
+  ✓ Matching information saved to '08.pQTL_ID_Mapping.csv'
+
+============================================================
+STEP 1-2 COMPLETE. Found 1 pQTL exposures.
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+=== pQTL Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-20 18:37:39 
+Analysis Type: pQTL (Protein Quantitative Trait Loci)
+Total pQTL exposures to process: 1 
+Outcomes: ebi-a-GCST90091033 
+Using rsIDs from 'rsids2' column for SNP matching
+=================================================
+
+
+============================================================
+ANALYSIS [1/1]: A1BG
+File: A1BG_P04217_OID30771_v1_Inflammation_II_expo_rt.txt
+============================================================
+
+STEP 1: Reading and processing pQTL file (using rsIDs)...
+  File loaded successfully: 11 rows
+  Significant SNPs (p < 5e-8): 11 
+  Extracting rsIDs from 'rsids2' column...
+  SNPs with valid rsIDs: 11 
+  Sample rsIDs: rs2885060, rs114853328, rs45601339 
+  After EAF filter (0.01-0.99): 11 IVs
+  After F-statistic filter (> 10 ): 11 IVs
+  After removing duplicates: 11 unique IVs
+
+STEP 2: Extracting outcome data...
+  Extracting data for 11 SNP(s) from outcome(s): ebi-a-GCST90091033 
+Extracting data for 11 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 2 SNPs in outcome ebi-a-GCST90091033
+Extracting data for 2 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 11 SNPs in outcome(s)
+
+STEP 3: Harmonising data...
+Harmonising A1BG (A1BG) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 11 SNPs
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method         Q    Q_pval
+1                  MR Egger  9.474232 0.3946979
+2 Inverse variance weighted 11.774538 0.3004292
+  Selected IVW Q_pval: 0.3004292 
+  No significant heterogeneity (Q_pval = 0.3 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'A1BG' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+A1BG - Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for A1BG completed successfully!
+Warning messages:
+1: In `[.data.table`(d, !duplicated(proxy_snp.outcome), , by = outcome) :
+  Ignoring by/keyby because 'j' is not supplied
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+3: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+4: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+5: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+
+============================================================
+STEP 4: SAVING SUCCESSFULLY ANALYZED PROTEINS LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+  Total proteins successfully analyzed: 1 
+  ✓ Successfully analyzed proteins list saved to: /media/desk16/share/secure/MR/results/test_pqtl/09.pQTL_Successful_Genes.csv 
+
+  Successfully analyzed proteins ( 1 ):
+  1. A1BG
+
+============================================================
+COMPREHENSIVE pQTL MR ANALYSIS REPORT
+============================================================
+
+STUDY OVERVIEW:
+• Analysis Type: pQTL (Protein Quantitative Trait Loci)
+• Candidate genes processed: 1 
+• pQTL files found: 1812 
+• Initially matched proteins: 1 
+• Successfully analyzed: 1 
+• Failed: 0 
+• Outcomes: ebi-a-GCST90091033 
+
+ANALYSIS STATUS SUMMARY:
+
+Success 
+      1 
+
+MAIN MR RESULTS (IVW method) - SUCCESSFUL ANALYSES:
+  protein n_snps   beta     se p_value    OR         CI_95
+1    A1BG     11 0.0509 0.0576   0.377 1.052 [0.94, 1.178]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 0 / 1 
+
+OUTPUT DIRECTORY STRUCTURE:
+1. Tables directory: /media/desk16/share/secure/MR/results/test_pqtl/tables 
+2. Figures directory: /media/desk16/share/secure/MR/results/test_pqtl/figures 
+3. Initial matching: /media/desk16/share/secure/MR/results/test_pqtl/08.pQTL_ID_Mapping.csv 
+4. Successful analyses: /media/desk16/share/secure/MR/results/test_pqtl/09.pQTL_Successful_Genes.csv 
+5. Analysis log: /media/desk16/share/secure/MR/results/test_pqtl/MR_pQTL_Analysis_Log.txt 
+6. Main results summary: /media/desk16/share/secure/MR/results/test_pqtl/tables/pqtl_main_results_summary.csv 
+
+============================================================
+STEP 5: GENERATING STANDARD OUTPUT FILES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Processing 1 analyses to generate summary files...
+Saving integrated results...
+  Outcome name: Nonalcoholic fatty liver disease 
+
+Saving merged format files (00-07)...
+  ✓ 00.Complete_MR_Results.csv saved
+  ✓ 01.MR_Results_All_Genes.csv saved
+  ✓ 02.Heterogeneity_All_Genes.csv saved
+  ✓ 03.Pleiotropy_All_Genes.csv saved
+  ✓ 04.MR_PRESSO_Results.csv saved
+  ✓ 05.Steiger_Direction_Results.csv saved
+  ✓ 06.Three_Filter_Results.csv saved
+
+✓ All merged format files (00-07) generated successfully!
+
+Analysis completed at: 2026-03-20 18:38:21 
+
+✓ pQTL MR analysis completed!
+Total proteins successfully analyzed: 1 
+Total proteins failed: 0 
+
+主要结果文件 (00-07 合并格式):
+   00. 00.Complete_MR_Results.csv       - 最完整初始结果（1行/基因）
+   01. 01.MR_Results_All_Genes.csv     - Table 1格式（5行/基因：5种MR方法）
+   02. 02.Heterogeneity_All_Genes.csv  - 异质性检验（IVW + MR Egger + PRESSO）
+   03. 03.Pleiotropy_All_Genes.csv     - 水平多效性检验
+   04. 04.MR_PRESSO_Results.csv        - MR-PRESSO结果
+   05. 05.Steiger_Direction_Results.csv - Steiger方向性分析
+   06. 06.Three_Filter_Results.csv     - 三重筛选结果
+   07. 07.MR_res_gene.csv             - 因果靶点筛选结果
+   08. 08.pQTL_ID_Mapping.csv                  - 蛋白ID映射表
+   09. 09.pQTL_Successful_Genes.csv       - 成功分析的蛋白列表
+   10. MR_pQTL_Analysis_Log.txt       - 分析日志
+
+
+======================================================================
+pQTL MR ANALYSIS PIPELINE FINISHED
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+[18:38:22] MR分析完成!
+[18:38:22] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: pqtl 
+  时间戳: 20260320_183725 
+================================================================================
+
+Loaded results from 00.Complete_MR_Results.csv
+Loaded heterogeneity from: /media/desk16/share/secure/MR/results/test_pqtl/02.Heterogeneity_All_Genes.csv 
+Loaded pleiotropy from: /media/desk16/share/secure/MR/results/test_pqtl/03.Pleiotropy_All_Genes.csv 
+Loaded MR results from: /media/desk16/share/secure/MR/results/test_pqtl/01.MR_Results_All_Genes.csv 
+Loaded three-filter results from: /media/desk16/share/secure/MR/results/test_pqtl/06.Three_Filter_Results.csv 
+Loaded config parameters from: /media/desk16/share/secure/MR/results/test_pqtl/analysis_config.ini 
+Statistics: Total genes: 1 , Significant: 0 
+Loaded successful genes from: /media/desk16/share/secure/MR/results/test_pqtl/09.pQTL_Successful_Genes.csv 
+Added plot: A1BG - scatter (图 1 )
+Added plot: A1BG - forest (图 2 )
+Added plot: A1BG - funnel (图 3 )
+Added plot: A1BG - leaveoneout (图 4 )
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_pqtl.20260320_183725.docx 
+================================================================================
+[18:38:24] Word报告已生成: /media/desk16/share/secure/MR/report/MR_pqtl.20260320_183725.docx

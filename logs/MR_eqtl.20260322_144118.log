@@ -1,0 +1,645 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-22 14:41:18
+运行ID: 20260322_144118
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: eqtl
+输入文件: /media/desk16/share/secure/MR/results/test_final_check/09.eQTL_Successful_Genes.csv
+输出目录: /media/desk16/share/secure/MR/results/test_final_check
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[14:41:18] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_eqtl.20260322_144118.log
+[14:41:18] 配置文件已生成: /media/desk16/share/secure/MR/results/test_final_check/eqtl.config.ini
+[14:41:18] 开始MR分析...
+[14:41:18]   类型: eqtl
+[14:41:18]   输入: /media/desk16/share/secure/MR/results/test_final_check/09.eQTL_Successful_Genes.csv
+[14:41:18]   输出: /media/desk16/share/secure/MR/results/test_final_check
+[14:41:18]   共定位: 0
+[14:41:18]   P值阈值: 5e-8
+[14:41:18]   KB距离: 10000
+[14:41:18]   R2阈值: 0.001
+[14:41:18]   F统计量阈值: 10
+[14:41:18]   EAF阈值: 0.01
+[14:41:18]   最少SNPs: 3
+[14:41:18]   结局ID: ebi-a-GCST90091033
+[14:41:18] 输出目录已创建: /media/desk16/share/secure/MR/results/test_final_check
+[14:41:18] 开始eQTL MR分析...
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: sysfonts
+Loading required package: showtextdb
+
+clusterProfiler v4.16.0 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+
+Please cite:
+
+T Wu, E Hu, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan,
+X Fu, S Liu, X Bo, and G Yu. clusterProfiler 4.0: A universal
+enrichment tool for interpreting omics data. The Innovation. 2021,
+2(3):100141
+
+Attaching package: ‘clusterProfiler’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+[Config] Loading config from: scripts/config/MR.config.ini 
+[Token] Using token from environment variable
+
+================================================================================
+  MR eQTL Analysis
+  Started: 2026-03-22 14:41:27 
+================================================================================
+
+
+[Token Check] Validating OpenGWAS token...
+[Token Check] OK - Token is valid
+[Config] Parameters saved to: /media/desk16/share/secure/MR/results/test_final_check/analysis_config.ini 
+
+============================================================
+STEP 0: PROCESSING CANDIDATE GENE LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+1. Loading and inspecting the gene list...
+   Original dimensions: 2 rows, 1 columns
+   Original column names: exposure 
+   First few rows:
+  exposure
+1    FADS2
+2    PTGS2
+   ✓ Single column detected, renamed to 'gene', added id column
+
+2. Cleaning and converting gene identifiers to Ensembl ID...
+   Total unique input identifiers: 2 
+   Input does not appear to be Ensembl IDs. Attempting conversion...
+
+Loading required package: AnnotationDbi
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: generics
+
+Attaching package: ‘generics’
+
+The following object is masked from ‘package:dplyr’:
+
+    explain
+
+The following objects are masked from ‘package:base’:
+
+    as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+    setequal, union
+
+
+Attaching package: ‘BiocGenerics’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+    unsplit, which.max, which.min
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    rename
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    slice
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    trim
+
+
+Attaching package: ‘AnnotationDbi’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    select
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+   Attempting conversion from gene symbol to Ensembl ID...
+   Loading clusterProfiler and org.Hs.eg.db...
+'select()' returned 1:1 mapping between keys and columns
+   ✓ Successfully converted 2 unique Ensembl IDs.
+   Note: 0 duplicate mappings were removed.
+
+3. Finalizing eQTL exposure ID list...
+   Conversion method: Gene Symbol to Ensembl (via org.Hs.eg.db) 
+   Final unique eQTL exposure IDs: 2 
+   Sample of first 5 formatted exposure IDs:
+[1] "eqtl-a-ENSG00000134824" "eqtl-a-ENSG00000073756"
+
+4. Saving conversion mapping for verification...
+   ✓ ID conversion mapping saved to '08.eQTL_ID_Mapping.csv'
+   Mapping file has 2 rows.
+
+============================================================
+STEP 0 COMPLETE. Proceeding to main MR analysis loop with 2 exposures.
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+=== Exposures Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-22 14:41:29 
+Exposures: EQTL
+Total exposures to process: 2 
+Outcome: ebi-a-GCST90091033 
+===========================================
+
+
+============================================================
+ANALYSIS [1/2]: eqtl-a-ENSG00000134824
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 4 IVs
+  After EAF filter (0.01-0.99): 4 IVs
+  After F-statistic filter (> 10 ): 4 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 4 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 4 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000134824 || id:eqtl-a-ENSG00000134824 (eqtl-a-ENSG00000134824) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 4 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1                  MR Egger 3.006087 0.2224521
+2 Inverse variance weighted 3.701658 0.2955340
+  Selected IVW Q_pval: 0.295534 
+  No significant heterogeneity (Q_pval = 0.296 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000134824' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 26.07773
+
+$Pvalue
+[1] 0.541
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000134824 completed successfully!
+
+============================================================
+ANALYSIS [2/2]: eqtl-a-ENSG00000073756
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 9 IVs
+  After EAF filter (0.01-0.99): 9 IVs
+  After F-statistic filter (> 10 ): 9 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 9 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 9 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000073756 || id:eqtl-a-ENSG00000073756 (eqtl-a-ENSG00000073756) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 9 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1                  MR Egger 5.567452 0.5910609
+2 Inverse variance weighted 7.218253 0.5132785
+  Selected IVW Q_pval: 0.5132785 
+  No significant heterogeneity (Q_pval = 0.513 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000073756' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 11.50987
+
+$Pvalue
+[1] 0.464
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000073756 completed successfully!
+Warning messages:
+1: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+2: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+3: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+4: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+5: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+6: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+7: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+8: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+
+============================================================
+COMPREHENSIVE ANALYSIS REPORT - eQTL MR ANALYSIS
+============================================================
+
+STUDY OVERVIEW:
+• Exposures: eQTL (expression quantitative trait loci) genetic variants
+• Total exposures processed: 2 
+• Successfully analyzed: 2 
+• Failed: 0 
+• Outcome: ebi-a-GCST90091033 
+
+MAIN MR RESULTS (IVW method):
+                exposure n_snps   beta     se p_value    OR          CI_95
+1 eqtl-a-ENSG00000134824      4 0.0142 0.0171   0.407 1.014 [0.981, 1.049]
+2 eqtl-a-ENSG00000073756      9 0.0355 0.0352   0.313 1.036  [0.967, 1.11]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+2 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 0 / 2 
+
+HETEROGENEITY SUMMARY (Cochran's Q test):
+                exposure    Q Q_pval I2               method_used
+1 eqtl-a-ENSG00000134824 3.70  0.296 NA Inverse variance weighted
+2 eqtl-a-ENSG00000073756 7.22  0.513 NA Inverse variance weighted
+
+INTERPRETATION OF HETEROGENEITY:
+  eqtl-a-ENSG00000134824: No significant heterogeneity (p = 0.296) → Use FIXED EFFECTS IVW
+  eqtl-a-ENSG00000073756: No significant heterogeneity (p = 0.513) → Use FIXED EFFECTS IVW
+
+PLEIOTROPY SUMMARY (MR-Egger intercept test):
+                exposure egger_intercept     se p_value
+1 eqtl-a-ENSG00000134824         -0.0153 0.0225   0.567
+2 eqtl-a-ENSG00000073756         -0.0143 0.0111    0.24
+
+INTERPRETATION OF PLEIOTROPY:
+  eqtl-a-ENSG00000134824: No significant horizontal pleiotropy (p = 0.567) → Results are reliable
+  eqtl-a-ENSG00000073756: No significant horizontal pleiotropy (p = 0.24) → Results are reliable
+
+STEIGER DIRECTIONALITY TEST SUMMARY:
+                exposure snp_r2.exposure snp_r2.outcome
+1 eqtl-a-ENSG00000134824          0.0418          1e-04
+2 eqtl-a-ENSG00000073756          0.0210          2e-04
+  correct_causal_direction steiger_pval
+1                     TRUE       <2e-16
+2                     TRUE       <2e-16
+
+INTERPRETATION OF DIRECTIONALITY:
+  eqtl-a-ENSG00000134824: Correct causal direction
+  eqtl-a-ENSG00000073756: Correct causal direction
+
+OUTPUT FILES:
+1. Tables directory: /media/desk16/share/secure/MR/results/test_final_check/tables 
+   - *_harmonised.csv: Harmonised data for each exposure
+   - *_mr_results.csv: MR results for each exposure
+   - *_heterogeneity.csv: Heterogeneity test results
+   - *_pleiotropy.csv: Pleiotropy test results
+   - *_steiger.csv: Steiger directionality test results
+   - *_mr_presso.csv: MR-PRESSO results
+2. Figures directory: /media/desk16/share/secure/MR/results/test_final_check/figures 
+   - *_scatter_plot.png: Exposure-outcome scatter plot
+   - *_forest_plot.png: Forest plot of SNP effects
+   - *_funnel_plot.png: Funnel plot for symmetry
+   - *_leaveoneout_plot.png: Leave-one-out sensitivity analysis
+
+Analysis completed at: 2026-03-22 14:42:27 
+Output directory: /media/desk16/share/secure/MR/results/test_final_check 
+
+Complete MR analysis for eQTL exposures finished successfully!
+All results saved to: /media/desk16/share/secure/MR/results/test_final_check 
+Total exposures successfully analyzed: 2 
+
+Saving successfully analyzed eQTL genes...
+✓ Saved 2 successfully analyzed eQTL genes to 09.eQTL_Successful_Genes.csv
+
+============================================================
+CREATING DETAILED HETEROGENEITY AND PLEIOTROPY SUMMARY TABLE
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+============================================================
+ANALYSIS COMPLETE!
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+============================================================
+STEP 9: CREATING INTEGRATED MR RESULTS TABLE FOR SUCCESSFUL GENES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+整合 2 个基因的MR结果...
+  已处理 2 / 2 个基因
+✓ 成功整合 2 个基因的MR结果
+Outcome name: Nonalcoholic fatty liver disease 
+✓ 保存完整MR结果到: /media/desk16/share/secure/MR/results/test_final_check/00.Complete_MR_Results.csv 
+✓ 保存Table 1格式（5种方法）到: /media/desk16/share/secure/MR/results/test_final_check/01.MR_Results_All_Genes.csv 
+✓ 保存异质性检验结果到: /media/desk16/share/secure/MR/results/test_final_check/02.Heterogeneity_All_Genes.csv 
+✓ 保存水平多效性检验结果到: /media/desk16/share/secure/MR/results/test_final_check/03.Pleiotropy_All_Genes.csv 
+✓ 保存MR-PRESSO结果到: /media/desk16/share/secure/MR/results/test_final_check/04.MR_PRESSO_Results.csv 
+✓ 保存Steiger方向性分析结果到: /media/desk16/share/secure/MR/results/test_final_check/05.Steiger_Direction_Results.csv 
+✓ 保存三重筛选结果到: /media/desk16/share/secure/MR/results/test_final_check/06.Three_Filter_Results.csv 
+
+------------------------------------------------------------------------------------------------------------------------
+INTEGRATED MR RESULTS SUMMARY
+(Total: 2 genes)
+------------------------------------------------------------------------------------------------------------------------
+
+STATISTICAL SUMMARY:
+• Total genes analyzed: 2 
+• Genes with significant IVW (p < 0.05): 0 
+• Genes with protective effect (OR < 1): 0 
+• Genes with risk effect (OR > 1): 2 
+• Genes with heterogeneity (p < 0.05): 0 
+• Genes with pleiotropy (p < 0.05): 0 
+• Genes with correct direction (Steiger): 2 
+
+TOP 20 GENES (sorted by IVW P-value):
+ Rank  Gene      Ensembl_ID n_SNPs IVW_OR    IVW_95CI  IVW_P Significant
+    1 PTGS2 ENSG00000073756      9  1.036  0.967-1.11 0.3125          NO
+    2 FADS2 ENSG00000134824      4  1.014 0.981-1.049 0.4069          NO
+ Direction
+      Risk
+      Risk
+
+MOST SIGNIFICANT GENES:
+  1. PTGS2: OR = 1.036 (95% CI: 0.967-1.11), p = 0.3125
+  2. FADS2: OR = 1.014 (95% CI: 0.981-1.049), p = 0.4069
+
+============================================================
+FINAL OUTPUT FILES - INTEGRATED RESULTS
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+📁 输出目录:  /media/desk16/share/secure/MR/results/test_final_check 
+
+📄 主要结果文件 (00-07 合并格式):
+   00. 00.Complete_MR_Results.csv       - 最完整初始结果（1行/基因）
+   01. 01.MR_Results_All_Genes.csv     - Table 1格式（5行/基因：5种MR方法）
+   02. 02.Heterogeneity_All_Genes.csv  - 异质性检验（IVW + MR Egger + PRESSO）
+   03. 03.Pleiotropy_All_Genes.csv     - 水平多效性检验
+   04. 04.MR_PRESSO_Results.csv        - MR-PRESSO结果
+   05. 05.Steiger_Direction_Results.csv - Steiger方向性分析
+   06. 06.Three_Filter_Results.csv     - 三重筛选结果
+   07. 07.MR_res_gene.csv             - 因果靶点筛选结果
+   08. 08.eQTL_ID_Mapping.csv                  - 基因ID映射表
+   09. 09.eQTL_Successful_Genes.csv       - 成功分析的基因列表
+   10. MR_Analysis_Log.txt             - 分析日志
+
+📂 子目录:
+   • tables/ - 每个基因的详细结果文件
+   • figures/ - 所有可视化图表
+
+📊 分析统计:
+   • 总基因数:  2 
+   • 成功分析:  2 
+   • 失败分析:  0 
+   • IVW显著基因 (p<0.05):  0 
+   • 方向性正确基因 (Steiger p<0.05 & direction=TRUE):  2 
+   • 无水平多效性基因 (Egger intercept p>0.05):  2 
+   • 三重筛选通过基因:  0 
+   • 保护性基因:  0 
+   • 风险性基因:  2 
+
+⏰ 分析完成时间:  2026-03-22 14:42:28 
+📋 日志文件:  /media/desk16/share/secure/MR/results/test_final_check/MR_Analysis_Log.txt 
+
+============================================================
+ANALYSIS COMPLETE - 2026-03-22 14:42:28
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+============================================================
+STEP 10: AUTO-GENERATING MR REPORT
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Generating report...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: eqtl 
+  时间戳: 20260322_144118 
+================================================================================
+
+Loaded results from 00.Complete_MR_Results.csv
+Loaded heterogeneity from: /media/desk16/share/secure/MR/results/test_final_check/02.Heterogeneity_All_Genes.csv 
+Loaded pleiotropy from: /media/desk16/share/secure/MR/results/test_final_check/03.Pleiotropy_All_Genes.csv 
+Loaded MR results from: /media/desk16/share/secure/MR/results/test_final_check/01.MR_Results_All_Genes.csv 
+Loaded three-filter results from: /media/desk16/share/secure/MR/results/test_final_check/06.Three_Filter_Results.csv 
+Loaded config parameters from: /media/desk16/share/secure/MR/results/test_final_check/analysis_config.ini 
+Statistics: Total genes: 2 , Significant: 0 
+Loaded successful genes from: /media/desk16/share/secure/MR/results/test_final_check/09.eQTL_Successful_Genes.csv 
+Added plot: PTGS2 - scatter (图 1 )
+Added plot: PTGS2 - forest (图 2 )
+Added plot: PTGS2 - funnel (图 3 )
+Added plot: PTGS2 - leaveoneout (图 4 )
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/results/test_final_check/MR_Report_20260322_144118.docx 
+================================================================================
+✓ Report saved to: /media/desk16/share/secure/MR/results/test_final_check/MR_Report_20260322_144118.docx 
+[14:42:31] MR分析完成!
+[14:42:31] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: eqtl 
+  时间戳: 20260322_144118 
+================================================================================
+
+Loaded results from 00.Complete_MR_Results.csv
+Loaded heterogeneity from: /media/desk16/share/secure/MR/results/test_final_check/02.Heterogeneity_All_Genes.csv 
+Loaded pleiotropy from: /media/desk16/share/secure/MR/results/test_final_check/03.Pleiotropy_All_Genes.csv 
+Loaded MR results from: /media/desk16/share/secure/MR/results/test_final_check/01.MR_Results_All_Genes.csv 
+Loaded three-filter results from: /media/desk16/share/secure/MR/results/test_final_check/06.Three_Filter_Results.csv 
+Loaded config parameters from: /media/desk16/share/secure/MR/results/test_final_check/analysis_config.ini 
+Statistics: Total genes: 2 , Significant: 0 
+Loaded successful genes from: /media/desk16/share/secure/MR/results/test_final_check/09.eQTL_Successful_Genes.csv 
+Added plot: PTGS2 - scatter (图 1 )
+Added plot: PTGS2 - forest (图 2 )
+Added plot: PTGS2 - funnel (图 3 )
+Added plot: PTGS2 - leaveoneout (图 4 )
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_eqtl.20260322_144118.docx 
+================================================================================
+[14:42:33] Word报告已生成: /media/desk16/share/secure/MR/report/MR_eqtl.20260322_144118.docx

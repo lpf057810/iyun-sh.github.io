@@ -1,0 +1,117 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-12 09:57:33
+运行ID: 20260312_095733
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: pqtl
+输入文件: /media/desk16/share/26YHB100F/06_MR/pqtl_genes.csv
+输出目录: /media/desk16/share/secure/MR/results/MR_pqtl
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[09:57:33] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_pqtl.20260312_095733.log
+[09:57:33] 配置文件已生成: /media/desk16/share/secure/MR/results/MR_pqtl/pqtl.config.ini
+[09:57:33] 开始MR分析...
+[09:57:33]   类型: pqtl
+[09:57:33]   输入: /media/desk16/share/26YHB100F/06_MR/pqtl_genes.csv
+[09:57:33]   输出: /media/desk16/share/secure/MR/results/MR_pqtl
+[09:57:33]   共定位: 0
+[09:57:33]   P值阈值: 5e-8
+[09:57:33]   KB距离: 10000
+[09:57:33]   R2阈值: 0.001
+[09:57:33]   F统计量阈值: 10
+[09:57:33]   EAF阈值: 0.01
+[09:57:33]   最少SNPs: 3
+[09:57:33]   结局ID: ebi-a-GCST90091033
+[09:57:33]   pQTL目录: /media/desk16/iyunlpf/NAF/pqtl/data/cis_clump
+[09:57:33] 输出目录已创建: /media/desk16/share/secure/MR/results/MR_pqtl
+[09:57:33] 开始pQTL MR分析...
+✓ Loaded .Renviron from HOME (global)
+✓ JWT token loaded successfully (length: 546 characters)
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+
+================================================================================
+  MR pQTL Analysis
+  Started: 2026-03-12 09:57:36 
+================================================================================
+
+STEP 1: Loading candidate gene list...
+  Total candidate genes: 8 
+
+STEP 2: Scanning pQTL directory and matching genes...
+  pQTL directory: 
+Error in dir.exists(pqtl) : invalid filename argument
+Execution halted
+[09:57:36] MR分析完成!
+[09:57:36] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器
+  类型: pqtl 
+  时间戳: 20260312_095733 
+================================================================================
+
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_pqtl.20260312_095733.docx 
+================================================================================
+[09:57:37] Word报告已生成: /media/desk16/share/secure/MR/report/MR_pqtl.20260312_095733.docx

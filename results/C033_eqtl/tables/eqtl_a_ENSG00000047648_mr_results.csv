@@ -1,0 +1,2 @@
+"id.exposure","id.outcome","outcome","exposure","method","nsnp","b","se","pval","lo_ci","up_ci","or","or_lci95","or_uci95","n_snps"
+"eqtl-a-ENSG00000047648","ebi-a-GCST90018894","ebi-a-GCST90018894","eqtl-a-ENSG00000047648","Inverse variance weighted (fixed effects)",2,-0.342464445445211,0.163842517522755,0.0365993907249254,-0.663595779789811,-0.0213331111006115,0.71001836332358,0.51499618825633,0.97889283018494,2

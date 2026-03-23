@@ -1,0 +1,2 @@
+"gene_symbol","ensembl_id","n_snps","ivw_beta","ivw_se","ivw_pval","ivw_or"
+"PTGS2","ENSG00000073756",59,0.0697,0.0131,"9.311e-08",1.072

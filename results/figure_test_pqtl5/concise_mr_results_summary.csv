@@ -1,0 +1,2 @@
+"Rank","Gene_Symbol","Ensembl_ID","n_SNPs","IVW_OR","IVW_OR_95CI","IVW_Pvalue","IVW_Significant","IVW_Direction","Heterogeneity_P","Pleiotropy_P","Steiger_Correct","Steiger_P"
+1,"A1BG","A1BG",11,1.052,"0.94-1.178","0.377","NO","Risk","0.3","0.173468","TRUE","5.31e-21"

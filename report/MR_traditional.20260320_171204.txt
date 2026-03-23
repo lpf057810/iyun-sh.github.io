@@ -1,0 +1,30 @@
+================================================================================
+MR Analysis Report
+================================================================================
+
+Analysis Type: traditional
+Timestamp: 20260320_171204
+Input File: /media/desk16/share/secure/MR/test_genes_traditional.csv
+Output Directory: /media/desk16/share/secure/MR/results/test_trad
+
+Parameters:
+  - P-value threshold: 5e-8
+  - KB distance: 10000
+  - R2 threshold: 0.001
+  - F-statistic threshold: 10
+  - EAF threshold: 0.01
+  - Colocalization: 0
+
+Result Files:
+  - tables/: Analysis results
+  - figures/: Visualization plots
+
+Log File: logs/MR_traditional.20260320_171204.log
+Config: traditional.config.ini
+
+================================================================================
+
+Summary:
+----------
+Total genes analyzed: 3
+Significant genes (IVW p<0.05): 0

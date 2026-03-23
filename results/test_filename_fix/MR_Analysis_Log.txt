@@ -1,0 +1,226 @@
+=== Exposures Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-20 15:15:47 
+Exposures: EQTL
+Total exposures to process: 3 
+Outcome: ebi-a-GCST90091033 
+===========================================
+
+
+============================================================
+ANALYSIS [1/3]: eqtl-a-ENSG00000066322
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 4 IVs
+  After EAF filter (0.01-0.99): 4 IVs
+  After F-statistic filter (> 10 ): 4 IVs
+
+STEP 2: Extracting outcome data...
+  Found 3 SNPs in outcome
+
+STEP 3: Harmonising data...
+  Successfully harmonised 3 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method       Q    Q_pval
+1                  MR Egger 1.43809 0.2304487
+2 Inverse variance weighted 3.11766 0.2103821
+  Selected IVW Q_pval: 0.2103821 
+  No significant heterogeneity (Q_pval = 0.21 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  SKIP: Not enough SNPs for MR-PRESSO (need at least 4)
+
+STEP 9: Generating plots...
+  ✓ Scatter plot saved (PNG + PDF)
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+  ✓ Funnel plot saved (PNG + PDF)
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000066322 completed successfully!
+
+============================================================
+ANALYSIS [2/3]: eqtl-a-ENSG00000134824
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 7 IVs
+  After EAF filter (0.01-0.99): 7 IVs
+  After F-statistic filter (> 10 ): 7 IVs
+
+STEP 2: Extracting outcome data...
+  Found 6 SNPs in outcome
+
+STEP 3: Harmonising data...
+  Successfully harmonised 6 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method         Q    Q_pval
+1                  MR Egger 0.6148877 0.9613950
+2 Inverse variance weighted 1.3071976 0.9341893
+  Selected IVW Q_pval: 0.9341893 
+  No significant heterogeneity (Q_pval = 0.934 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  ✓ Scatter plot saved (PNG + PDF)
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+  ✓ Funnel plot saved (PNG + PDF)
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000134824 completed successfully!
+
+============================================================
+ANALYSIS [3/3]: eqtl-a-ENSG00000073756
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 12 IVs
+  After EAF filter (0.01-0.99): 12 IVs
+  After F-statistic filter (> 10 ): 12 IVs
+
+STEP 2: Extracting outcome data...
+  Found 12 SNPs in outcome
+
+STEP 3: Harmonising data...
+  Successfully harmonised 12 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1                  MR Egger 6.221685 0.7963070
+2 Inverse variance weighted 9.770972 0.5510986
+  Selected IVW Q_pval: 0.5510986 
+  No significant heterogeneity (Q_pval = 0.551 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  ✓ Scatter plot saved (PNG + PDF)
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+  ✓ Funnel plot saved (PNG + PDF)
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000073756 completed successfully!
+
+============================================================
+COMPREHENSIVE ANALYSIS REPORT - eQTL MR ANALYSIS
+============================================================
+
+STUDY OVERVIEW:
+• Exposures: eQTL (expression quantitative trait loci) genetic variants
+• Total exposures processed: 3 
+• Successfully analyzed: 3 
+• Failed: 0 
+• Outcome: ebi-a-GCST90091033 
+
+MAIN MR RESULTS (IVW method):
+                exposure n_snps   beta     se p_value    OR          CI_95
+1 eqtl-a-ENSG00000066322      3 0.0183 0.1101   0.868 1.019 [0.821, 1.264]
+2 eqtl-a-ENSG00000134824      6 0.0167 0.0320     0.6 1.017 [0.955, 1.083]
+3 eqtl-a-ENSG00000073756     12 0.0251 0.0344   0.465 1.025 [0.959, 1.097]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+2 Inverse variance weighted (fixed effects)
+3 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 0 / 3 
+
+HETEROGENEITY SUMMARY (Cochran's Q test):
+                exposure    Q Q_pval I2               method_used
+1 eqtl-a-ENSG00000066322 3.12   0.21 NA Inverse variance weighted
+2 eqtl-a-ENSG00000134824 1.31  0.934 NA Inverse variance weighted
+3 eqtl-a-ENSG00000073756 9.77  0.551 NA Inverse variance weighted
+
+INTERPRETATION OF HETEROGENEITY:
+  eqtl-a-ENSG00000066322: No significant heterogeneity (p = 0.21) → Use FIXED EFFECTS IVW
+  eqtl-a-ENSG00000134824: No significant heterogeneity (p = 0.934) → Use FIXED EFFECTS IVW
+  eqtl-a-ENSG00000073756: No significant heterogeneity (p = 0.551) → Use FIXED EFFECTS IVW
+
+PLEIOTROPY SUMMARY (MR-Egger intercept test):
+                exposure egger_intercept     se p_value
+1 eqtl-a-ENSG00000066322          0.0436 0.0403   0.475
+2 eqtl-a-ENSG00000134824         -0.0230 0.0277   0.452
+3 eqtl-a-ENSG00000073756         -0.0156 0.0083  0.0889
+
+INTERPRETATION OF PLEIOTROPY:
+  eqtl-a-ENSG00000066322: No significant horizontal pleiotropy (p = 0.475) → Results are reliable
+  eqtl-a-ENSG00000134824: No significant horizontal pleiotropy (p = 0.452) → Results are reliable
+  eqtl-a-ENSG00000073756: No significant horizontal pleiotropy (p = 0.0889) → Results are reliable
+
+STEIGER DIRECTIONALITY TEST SUMMARY:
+                exposure snp_r2.exposure snp_r2.outcome
+1 eqtl-a-ENSG00000066322          0.0017          1e-04
+2 eqtl-a-ENSG00000134824          0.0190          0e+00
+3 eqtl-a-ENSG00000073756          0.0218          2e-04
+  correct_causal_direction steiger_pval
+1                     TRUE     1.48e-08
+2                     TRUE       <2e-16
+3                     TRUE       <2e-16
+
+INTERPRETATION OF DIRECTIONALITY:
+  eqtl-a-ENSG00000066322: Correct causal direction
+  eqtl-a-ENSG00000134824: Correct causal direction
+  eqtl-a-ENSG00000073756: Correct causal direction
+
+OUTPUT FILES:
+1. Tables directory: /media/desk16/share/secure/MR/results/test_filename_fix/tables 
+   - *_harmonised.csv: Harmonised data for each exposure
+   - *_mr_results.csv: MR results for each exposure
+   - *_heterogeneity.csv: Heterogeneity test results
+   - *_pleiotropy.csv: Pleiotropy test results
+   - *_steiger.csv: Steiger directionality test results
+   - *_mr_presso.csv: MR-PRESSO results
+2. Figures directory: /media/desk16/share/secure/MR/results/test_filename_fix/figures 
+   - *_scatter_plot.png: Exposure-outcome scatter plot
+   - *_forest_plot.png: Forest plot of SNP effects
+   - *_funnel_plot.png: Funnel plot for symmetry
+   - *_leaveoneout_plot.png: Leave-one-out sensitivity analysis
+
+Analysis completed at: 2026-03-20 15:17:15 
+Output directory: /media/desk16/share/secure/MR/results/test_filename_fix 

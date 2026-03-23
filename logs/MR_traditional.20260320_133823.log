@@ -1,0 +1,222 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-20 13:38:23
+运行ID: 20260320_133823
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: traditional
+输入文件: N/A
+输出目录: /media/desk16/share/secure/MR/results/test_run_trad3
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[13:38:23] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_traditional.20260320_133823.log
+[13:38:23] 配置文件已生成: /media/desk16/share/secure/MR/results/test_run_trad3/traditional.config.ini
+[13:38:23] 开始MR分析...
+[13:38:23]   类型: traditional
+[13:38:23]   输入: N/A
+[13:38:23]   输出: /media/desk16/share/secure/MR/results/test_run_trad3
+[13:38:23]   共定位: 0
+[13:38:23]   P值阈值: 5e-8
+[13:38:23]   KB距离: 10000
+[13:38:23]   R2阈值: 0.001
+[13:38:23]   F统计量阈值: 10
+[13:38:23]   EAF阈值: 0.01
+[13:38:23]   最少SNPs: 3
+[13:38:23]   结局ID: ebi-a-GCST90091033
+[13:38:23] 输出目录已创建: /media/desk16/share/secure/MR/results/test_run_trad3
+[13:38:23] 开始Traditional MR分析...
+TwoSampleMR version 0.7.0 
+
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: sysfonts
+Loading required package: showtextdb
+[Token] Using token from environment variable
+
+================================================================================
+  MR Traditional Analysis
+  Started: 2026-03-20 13:39:29 
+  Exposure type: both 
+  Output: /media/desk16/share/secure/MR/results/test_run_trad3 
+================================================================================
+
+[Token Check] Validating OpenGWAS token...
+[Token Check] OK - Token is valid
+[ 2026-03-20 13:39:31 ] JWT token loaded, starting with: eyJhbGciOiJSUzI1NiIsImtpZCI6Im ...
+Warning message:
+In dir.create(output_dir, recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/test_run_trad3' already exists
+Warning message:
+In dir.create(file.path(output_dir, "tables"), recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/test_run_trad3/tables' already exists
+Warning message:
+In dir.create(file.path(output_dir, "figures"), recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/test_run_trad3/figures' already exists
+[Config] Parameters saved to: /media/desk16/share/secure/MR/results/test_run_trad3/analysis_config.ini 
+[ 2026-03-20 13:39:31 ] Outcome: finn-b-TRAUMBRAIN_NONCONCUS 
+[ 2026-03-20 13:39:31 ] P-value threshold: 5e-08 
+
+======================================================================
+Processing: Self-harm 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+[ 2026-03-20 13:39:31 ] --- ukb-d-20480 ---
+[RETRY] Attempt 1 failed: argument is of length zero - Retrying in 1 s...
+[RETRY] Attempt 2 failed: argument is of length zero - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: argument is of length zero 
+[ 2026-03-20 13:39:35 ] No SNPs extracted
+
+======================================================================
+Processing: Violence 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+[ 2026-03-20 13:39:35 ] --- ukb-e-20523_AFR ---
+[RETRY] Attempt 1 failed: argument is of length zero - Retrying in 1 s...
+[RETRY] Attempt 2 failed: argument is of length zero - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: argument is of length zero 
+[ 2026-03-20 13:39:39 ] No SNPs extracted
+
+[ 2026-03-20 13:39:39 ] --- ukb-e-20523_CSA ---
+[ 2026-03-20 13:39:39 ] SNPs extracted: 5 
+Extracting data for 5 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_CSA (ukb-e-20523_CSA) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-20 13:39:41 ] F-statistics: mean= 30.44 , min= 29.75 , max= 31.23 
+[ 2026-03-20 13:39:41 ] Heterogeneity methods: MR Egger, Inverse variance weighted 
+                     method         Q      Q_pval
+1                  MR Egger  1.494937 0.683439271
+2 Inverse variance weighted 13.514385 0.009017645
+[ 2026-03-20 13:39:41 ] Heterogeneity detected → Using RANDOM EFFECTS IVW
+Analysing 'ukb-e-20523_CSA' on 'finn-b-TRAUMBRAIN_NONCONCUS'
+Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_CSA - severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS
+[ 2026-03-20 13:39:52 ] Steiger test failed: argument "r_exp" is missing, with no default 
+[ 2026-03-20 13:39:52 ] Three-filter: IVW= NO , Direction= NO , Pleiotropy= NO , Combined= NO 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-20 13:39:54 ] Scatter plot saved
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-20 13:39:55 ] Forest plot saved
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-20 13:39:56 ] Funnel plot saved
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-20 13:39:57 ] Leave-one-out plot saved
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+5: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+6: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+7: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+8: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`). 
+
+[ 2026-03-20 13:39:57 ] Saving merged format files (00-07)...
+[ 2026-03-20 13:39:57 ] 00.Complete_MR_Results.csv saved
+[ 2026-03-20 13:39:57 ] 01.MR_Results_All_Genes.csv saved (5 methods per exposure)
+[ 2026-03-20 13:39:57 ] 02.Heterogeneity_All_Genes.csv saved
+[ 2026-03-20 13:39:57 ] 03.Pleiotropy_All_Genes.csv saved
+[ 2026-03-20 13:39:57 ] 04.MR_PRESSO_Results.csv saved
+[ 2026-03-20 13:39:57 ] 05.Steiger_Direction_Results.csv saved
+[ 2026-03-20 13:39:57 ] 06.Three_Filter_Results.csv saved
+[ 2026-03-20 13:39:57 ] 07.MR_res_gene.csv saved ( 2  causal targets)
+================================================================================
+  Traditional MR Analysis Complete!
+  Finished: 2026-03-20 13:39:57 
+  Success: 1 / 3 
+  Results saved to: /media/desk16/share/secure/MR/results/test_run_trad3/tables 
+================================================================================
+[13:39:57] MR分析完成!
+[13:39:57] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: traditional 
+  时间戳: 20260320_133823 
+================================================================================
+
+Detected as Traditional MR
+Loaded results from 00.Complete_MR_Results.csv
+Loaded heterogeneity from: /media/desk16/share/secure/MR/results/test_run_trad3/02.Heterogeneity_All_Genes.csv 
+Loaded pleiotropy from: /media/desk16/share/secure/MR/results/test_run_trad3/03.Pleiotropy_All_Genes.csv 
+Loaded config parameters from: /media/desk16/share/secure/MR/results/test_run_trad3/analysis_config.ini 
+Statistics: Total genes: 3 , Significant: 0 
+Found 1 mr_results files
+Added plot: ukb-d-20480 - scatter (图 A )
+Added plot: ukb-d-20480 - forest (图 B )
+Added plot: ukb-d-20480 - funnel (图 C )
+Added plot: ukb-d-20480 - leaveoneout (图 D )
+Added plot: ukb-e-20523_AFR - scatter (图 E )
+Added plot: ukb-e-20523_AFR - forest (图 F )
+Added plot: ukb-e-20523_AFR - funnel (图 G )
+Added plot: ukb-e-20523_AFR - leaveoneout (图 H )
+Added plot: ukb-e-20523_CSA - scatter (图 I )
+Added plot: ukb-e-20523_CSA - forest (图 J )
+Added plot: ukb-e-20523_CSA - funnel (图 K )
+Added plot: ukb-e-20523_CSA - leaveoneout (图 L )
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_traditional.20260320_133823.docx 
+================================================================================
+[13:40:00] Word报告已生成: /media/desk16/share/secure/MR/report/MR_traditional.20260320_133823.docx

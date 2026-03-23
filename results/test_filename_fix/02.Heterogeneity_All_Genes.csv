@@ -1,0 +1,7 @@
+"Exposure","Outcome","Method","Heterogeneity_Q","Q_df","Q_P_value","PRESSO_global_p"
+"PTGS2","Nonalcoholic fatty liver disease","Inverse variance weighted",9.77097155974291,11,0.551098623424826,NA
+"PTGS2","Nonalcoholic fatty liver disease","MR Egger",6.2216846224819,10,0.79630700858224,NA
+"FADS2","Nonalcoholic fatty liver disease","Inverse variance weighted",1.30719761441557,5,0.934189309791357,NA
+"FADS2","Nonalcoholic fatty liver disease","MR Egger",0.61488767471381,4,0.961395046860167,NA
+"ELOVL1","Nonalcoholic fatty liver disease","Inverse variance weighted",3.11765951239533,2,0.21038212557946,NA
+"ELOVL1","Nonalcoholic fatty liver disease","MR Egger",1.43808984562868,1,0.23044869519105,NA

@@ -1,0 +1,3 @@
+"Rank","Gene_Symbol","Ensembl_ID","n_SNPs","IVW_OR","IVW_OR_95CI","IVW_Pvalue","IVW_Significant","IVW_Direction","Heterogeneity_P","Pleiotropy_P","Steiger_Correct","Steiger_P"
+1,"COMT","COMT",44,0.947,"0.907-0.989","0.0132","YES","Protective","0.0574","0.190918","TRUE","<1e-99"
+2,"AKR1B1","AKR1B1",2,0.845,"0.663-1.077","0.173","NO","Protective","0.282","NA","TRUE","1.21e-09"

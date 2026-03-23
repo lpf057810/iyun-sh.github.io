@@ -1,0 +1,2 @@
+"id.exposure","id.outcome","outcome","exposure","egger_intercept","se","pval"
+"ukb-e-20513_AFR","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Recent thoughts of suicide or self-harm || id:ukb-e-20513_AFR",-0.0117392316549605,0.0384368798076196,0.766995225135516

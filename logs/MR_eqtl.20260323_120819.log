@@ -1,0 +1,480 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-23 12:18:15
+运行ID: 20260323_120819
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: eqtl
+输入文件: /media/desk16/share/secure/MR/test_genes_eqtl.csv
+输出目录: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[12:18:15] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_eqtl.20260323_120819.log
+[12:18:15] 配置文件已生成: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/eqtl.config.ini
+[12:18:15] 开始MR分析...
+[12:18:15]   类型: eqtl
+[12:18:15]   输入: /media/desk16/share/secure/MR/test_genes_eqtl.csv
+[12:18:15]   输出: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl
+[12:18:15]   共定位: 0
+[12:18:15]   P值阈值: 5e-8
+[12:18:15]   KB距离: 10000
+[12:18:15]   R2阈值: 0.001
+[12:18:15]   F统计量阈值: 10
+[12:18:15]   EAF阈值: 0.01
+[12:18:15]   最少SNPs: 3
+[12:18:15]   结局ID: ebi-a-GCST90091033
+[12:18:15] 输出目录已创建: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl
+[12:18:15] 开始eQTL MR分析...
+TwoSampleMR version 0.7.0 
+
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: sysfonts
+Loading required package: showtextdb
+
+clusterProfiler v4.16.0 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+
+Please cite:
+
+Guangchuang Yu, Li-Gen Wang, Yanyan Han and Qing-Yu He.
+clusterProfiler: an R package for comparing biological themes among
+gene clusters. OMICS: A Journal of Integrative Biology. 2012,
+16(5):284-287
+
+Attaching package: ‘clusterProfiler’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+[Config] Loading config from: scripts/config/MR.config.ini 
+[Token] Using token from environment variable
+
+================================================================================
+  MR eQTL Analysis
+  Started: 2026-03-23 12:18:22 
+================================================================================
+
+
+[Token Check] Validating OpenGWAS token...
+[Token Check] FAILED - API error: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ 
+[Token Check] To update token, run: ./update_opengwas_token.sh <new_token>
+[Config] Parameters saved to: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/analysis_config.ini 
+
+============================================================
+STEP 0: PROCESSING CANDIDATE GENE LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+1. Loading and inspecting the gene list...
+   Original dimensions: 3 rows, 1 columns
+   Original column names: gene 
+   First few rows:
+    gene
+1 ELOVL1
+2  FADS2
+3  PTGS2
+   ✓ Single column detected, renamed to 'gene', added id column
+
+2. Cleaning and converting gene identifiers to Ensembl ID...
+   Total unique input identifiers: 3 
+   Input does not appear to be Ensembl IDs. Attempting conversion...
+
+Loading required package: AnnotationDbi
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: generics
+
+Attaching package: ‘generics’
+
+The following object is masked from ‘package:dplyr’:
+
+    explain
+
+The following objects are masked from ‘package:base’:
+
+    as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+    setequal, union
+
+
+Attaching package: ‘BiocGenerics’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+    unsplit, which.max, which.min
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    rename
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    slice
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    trim
+
+
+Attaching package: ‘AnnotationDbi’
+
+The following object is masked from ‘package:clusterProfiler’:
+
+    select
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+   Attempting conversion from gene symbol to Ensembl ID...
+   Loading clusterProfiler and org.Hs.eg.db...
+'select()' returned 1:1 mapping between keys and columns
+   ✓ Successfully converted 3 unique Ensembl IDs.
+   Note: 0 duplicate mappings were removed.
+'select()' returned 1:1 mapping between keys and columns
+
+3. Finalizing eQTL exposure ID list...
+   Conversion method: Gene Symbol to Ensembl (via org.Hs.eg.db) 
+   Final unique eQTL exposure IDs: 3 
+   Sample of first 5 formatted exposure IDs:
+[1] "eqtl-a-ENSG00000066322" "eqtl-a-ENSG00000134824" "eqtl-a-ENSG00000073756"
+
+4. Saving conversion mapping for verification...
+   ✓ ID conversion mapping saved to '08.eQTL_ID_Mapping.csv'
+   Mapping file has 3 rows.
+
+============================================================
+STEP 0 COMPLETE. Proceeding to main MR analysis loop with 3 exposures.
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+=== Exposures Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-23 12:19:20 
+Exposures: EQTL
+Total exposures to process: 3 
+Outcome: ebi-a-GCST90091033 
+===========================================
+
+
+============================================================
+ANALYSIS [1/3]: eqtl-a-ENSG00000066322
+============================================================
+
+STEP 1: Extracting instrumental variables...
+[RETRY] Attempt 1 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 1 s...
+[RETRY] Attempt 2 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ 
+  ERROR: No significant SNPs found (p < 5e-8) 
+
+============================================================
+ANALYSIS [2/3]: eqtl-a-ENSG00000134824
+============================================================
+
+STEP 1: Extracting instrumental variables...
+[RETRY] Attempt 1 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 1 s...
+[RETRY] Attempt 2 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ 
+  ERROR: No significant SNPs found (p < 5e-8) 
+
+============================================================
+ANALYSIS [3/3]: eqtl-a-ENSG00000073756
+============================================================
+
+STEP 1: Extracting instrumental variables...
+[RETRY] Attempt 1 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 1 s...
+[RETRY] Attempt 2 failed: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: The following error was encountered in trying to query the OpenGWAS server:
+Error in curl::curl_fetch_memory(url, handle = handle): Couldn't connect to server [api.opengwas.io]:
+Failed to connect to 127.0.0.1 port 40911 after 0 ms: Connection refused
+ 
+  ERROR: No significant SNPs found (p < 5e-8) 
+Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  restarting interrupted promise evaluation
+
+============================================================
+COMPREHENSIVE ANALYSIS REPORT - eQTL MR ANALYSIS
+============================================================
+
+STUDY OVERVIEW:
+• Exposures: eQTL (expression quantitative trait loci) genetic variants
+• Total exposures processed: 3 
+• Successfully analyzed: 0 
+• Failed: 3 
+• Outcome: ebi-a-GCST90091033 
+
+MAIN MR RESULTS (IVW method):
+No IVW results available.
+
+HETEROGENEITY SUMMARY (Cochran's Q test):
+No heterogeneity results available.
+
+PLEIOTROPY SUMMARY (MR-Egger intercept test):
+No pleiotropy results available.
+
+STEIGER DIRECTIONALITY TEST SUMMARY:
+No Steiger test results available.
+
+OUTPUT FILES:
+1. Tables directory: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/tables 
+   - *_harmonised.csv: Harmonised data for each exposure
+   - *_mr_results.csv: MR results for each exposure
+   - *_heterogeneity.csv: Heterogeneity test results
+   - *_pleiotropy.csv: Pleiotropy test results
+   - *_steiger.csv: Steiger directionality test results
+   - *_mr_presso.csv: MR-PRESSO results
+2. Figures directory: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/figures 
+   - *_scatter_plot.png: Exposure-outcome scatter plot
+   - *_forest_plot.png: Forest plot of SNP effects
+   - *_funnel_plot.png: Funnel plot for symmetry
+   - *_leaveoneout_plot.png: Leave-one-out sensitivity analysis
+
+Analysis completed at: 2026-03-23 12:28:04 
+Output directory: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl 
+
+Complete MR analysis for eQTL exposures finished successfully!
+All results saved to: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl 
+Total exposures successfully analyzed: 0 
+
+Saving successfully analyzed eQTL genes...
+✓ Saved 0 successfully analyzed eQTL genes to 09.eQTL_Successful_Genes.csv
+
+============================================================
+CREATING DETAILED HETEROGENEITY AND PLEIOTROPY SUMMARY TABLE
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+============================================================
+ANALYSIS COMPLETE!
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+============================================================
+STEP 9: CREATING INTEGRATED MR RESULTS TABLE FOR SUCCESSFUL GENES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+整合 0 个基因的MR结果...
+✓ 成功整合 0 个基因的MR结果
+⚠️ 警告: 没有MR结果可供整合
+  ✓ 创建空的00文件: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/00.Complete_MR_Results.csv 
+
+============================================================
+FINAL OUTPUT FILES - INTEGRATED RESULTS
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+📁 输出目录:  /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl 
+
+📄 主要结果文件 (00-07 合并格式):
+   00. 00.Complete_MR_Results.csv       - 最完整初始结果（1行/基因）
+   01. 01.MR_Results_All_Genes.csv     - Table 1格式（5行/基因：5种MR方法）
+   02. 02.Heterogeneity_All_Genes.csv  - 异质性检验（IVW + MR Egger + PRESSO）
+   03. 03.Pleiotropy_All_Genes.csv     - 水平多效性检验
+   04. 04.MR_PRESSO_Results.csv        - MR-PRESSO结果
+   05. 05.Steiger_Direction_Results.csv - Steiger方向性分析
+   06. 06.Three_Filter_Results.csv     - 三重筛选结果
+   07. 07.MR_res_gene.csv             - 因果靶点筛选结果
+   08. 08.eQTL_ID_Mapping.csv                  - 基因ID映射表
+   09. 09.eQTL_Successful_Genes.csv       - 成功分析的基因列表
+   10. MR_Analysis_Log.txt             - 分析日志
+
+📂 子目录:
+   • tables/ - 每个基因的详细结果文件
+   • figures/ - 所有可视化图表
+
+📊 分析统计:
+   • 总基因数:  3 
+   • 成功分析:  0 
+   • 失败分析:  3 
+
+⏰ 分析完成时间:  2026-03-23 12:28:04 
+📋 日志文件:  /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/MR_Analysis_Log.txt 
+
+============================================================
+ANALYSIS COMPLETE - 2026-03-23 12:28:04
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+✓ QS2 snapshot saved: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/eqtl_eqtl_node.qs2 
+✓ Session info saved: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/logs/eqtl_sessionInfo.20260323_120819.txt 
+
+============================================================
+STEP 10: AUTO-GENERATING MR REPORT
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Generating report...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: eqtl 
+  时间戳: 20260323_120819 
+================================================================================
+
+Loaded results from 00.Complete_MR_Results.csv
+Table genes source: strict 07/06 filter (no genes found, Table1/Table2 will be empty)
+Loaded config parameters from: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/analysis_config.ini 
+Statistics: Total genes: 0 , Significant: 0 
+Loaded successful genes from: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/09.eQTL_Successful_Genes.csv 
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/MR_Report_20260323_120819.docx 
+================================================================================
+✓ Report saved to: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/MR_Report_20260323_120819.docx 
+[12:28:07] MR分析完成!
+[12:28:07] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器（优化版）
+  类型: eqtl 
+  时间戳: 20260323_120819 
+================================================================================
+
+Loaded results from 00.Complete_MR_Results.csv
+Table genes source: strict 07/06 filter (no genes found, Table1/Table2 will be empty)
+Loaded config parameters from: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/analysis_config.ini 
+Statistics: Total genes: 0 , Significant: 0 
+Loaded successful genes from: /media/desk16/share/secure/MR/results/smoke_20260323_120819/eqtl/09.eQTL_Successful_Genes.csv 
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_eqtl.20260323_120819.docx 
+================================================================================
+[12:28:10] Word报告已生成: /media/desk16/share/secure/MR/report/MR_eqtl.20260323_120819.docx

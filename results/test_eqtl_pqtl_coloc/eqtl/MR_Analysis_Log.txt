@@ -1,0 +1,116 @@
+=== Exposures Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-17 16:42:30 
+Exposures: EQTL
+Total exposures to process: 1 
+Outcome: ebi-a-GCST90091033 
+===========================================
+
+
+============================================================
+ANALYSIS [1/1]: eqtl-a-ENSG00000108691
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 10 IVs
+  After EAF filter (0.01-0.99): 10 IVs
+  After F-statistic filter (> 10 ): 10 IVs
+
+STEP 2: Extracting outcome data...
+  Found 10 SNPs in outcome
+
+STEP 3: Harmonising data...
+  Successfully harmonised 10 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method         Q    Q_pval
+1                  MR Egger 0.7993425 0.9992261
+2 Inverse variance weighted 1.9629755 0.9920396
+  Selected IVW Q_pval: 0.9920396 
+  No significant heterogeneity (Q_pval = 0.992 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  Scatter plot failed: invalid font type 
+  Forest plot failed: invalid font type 
+  Funnel plot failed: failed to find or load PDF CID font 
+  Leave-one-out plot failed: invalid font type 
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000108691 completed successfully!
+
+============================================================
+COMPREHENSIVE ANALYSIS REPORT - eQTL MR ANALYSIS
+============================================================
+
+STUDY OVERVIEW:
+• Exposures: eQTL (expression quantitative trait loci) genetic variants
+• Total exposures processed: 1 
+• Successfully analyzed: 1 
+• Failed: 0 
+• Outcome: ebi-a-GCST90091033 
+
+MAIN MR RESULTS (IVW method):
+                exposure n_snps beta     se  p_value    OR          CI_95
+1 eqtl-a-ENSG00000108691     10 0.28 0.0824 0.000679 1.323 [1.126, 1.555]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 1 / 1 
+Significant exposures:
+                exposure    OR          CI_95  p_value
+1 eqtl-a-ENSG00000108691 1.323 [1.126, 1.555] 0.000679
+
+HETEROGENEITY SUMMARY (Cochran's Q test):
+                exposure    Q Q_pval I2               method_used
+1 eqtl-a-ENSG00000108691 1.96  0.992 NA Inverse variance weighted
+
+INTERPRETATION OF HETEROGENEITY:
+  eqtl-a-ENSG00000108691: No significant heterogeneity (p = 0.992) → Use FIXED EFFECTS IVW
+
+PLEIOTROPY SUMMARY (MR-Egger intercept test):
+                exposure egger_intercept     se p_value
+1 eqtl-a-ENSG00000108691          0.0272 0.0252   0.312
+
+INTERPRETATION OF PLEIOTROPY:
+  eqtl-a-ENSG00000108691: No significant horizontal pleiotropy (p = 0.312) → Results are reliable
+
+STEIGER DIRECTIONALITY TEST SUMMARY:
+                exposure snp_r2.exposure snp_r2.outcome
+1 eqtl-a-ENSG00000108691          0.0031          3e-04
+  correct_causal_direction steiger_pval
+1                     TRUE     1.76e-11
+
+INTERPRETATION OF DIRECTIONALITY:
+  eqtl-a-ENSG00000108691: Correct causal direction
+
+OUTPUT FILES:
+1. Tables directory: /media/desk16/share/secure/MR/results/test_eqtl_pqtl_coloc/eqtl/tables 
+   - *_harmonised.csv: Harmonised data for each exposure
+   - *_mr_results.csv: MR results for each exposure
+   - *_heterogeneity.csv: Heterogeneity test results
+   - *_pleiotropy.csv: Pleiotropy test results
+   - *_steiger.csv: Steiger directionality test results
+   - *_mr_presso.csv: MR-PRESSO results
+2. Figures directory: /media/desk16/share/secure/MR/results/test_eqtl_pqtl_coloc/eqtl/figures 
+   - *_scatter_plot.png: Exposure-outcome scatter plot
+   - *_forest_plot.png: Forest plot of SNP effects
+   - *_funnel_plot.png: Funnel plot for symmetry
+   - *_leaveoneout_plot.png: Leave-one-out sensitivity analysis
+
+Analysis completed at: 2026-03-17 16:42:57 
+Output directory: /media/desk16/share/secure/MR/results/test_eqtl_pqtl_coloc/eqtl 

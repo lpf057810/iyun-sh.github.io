@@ -1,0 +1,467 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-23 10:11:15
+运行ID: 20260323_101115
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: eqtl
+输入文件: results/100F_eqtl/eqtl_genes.csv
+输出目录: /media/desk16/share/secure/MR/results/100F_eqtl_kb10_p5e6_v2
+共定位分析: 0
+P值阈值: 5e-6
+KB距离: 10
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[10:11:15] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_eqtl.20260323_101115.log
+[10:11:15] 配置文件已生成: /media/desk16/share/secure/MR/results/100F_eqtl_kb10_p5e6_v2/eqtl.config.ini
+[10:11:15] 开始MR分析...
+[10:11:15]   类型: eqtl
+[10:11:15]   输入: results/100F_eqtl/eqtl_genes.csv
+[10:11:15]   输出: /media/desk16/share/secure/MR/results/100F_eqtl_kb10_p5e6_v2
+[10:11:15]   共定位: 0
+[10:11:15]   P值阈值: 5e-6
+[10:11:15]   KB距离: 10
+[10:11:15]   R2阈值: 0.001
+[10:11:15]   F统计量阈值: 10
+[10:11:15]   EAF阈值: 0.01
+[10:11:15]   最少SNPs: 3
+[10:11:15]   结局ID: ebi-a-GCST90091033
+[10:11:15] 输出目录已创建: /media/desk16/share/secure/MR/results/100F_eqtl_kb10_p5e6_v2
+[10:11:15] 开始eQTL MR分析...
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: sysfonts
+Loading required package: showtextdb
+
+clusterProfiler v4.16.0 Learn more at https://yulab-smu.top/contribution-knowledge-mining/
+
+Please cite:
+
+S Xu, E Hu, Y Cai, Z Xie, X Luo, L Zhan, W Tang, Q Wang, B Liu, R Wang,
+W Xie, T Wu, L Xie, G Yu. Using clusterProfiler to characterize
+multiomics data. Nature Protocols. 2024, 19(11):3292-3320
+
+Attaching package: ‘clusterProfiler’
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+[Config] Loading config from: scripts/config/MR.config.ini 
+[Token] Using token from environment variable
+
+================================================================================
+  MR eQTL Analysis
+  Started: 2026-03-23 10:11:22 
+================================================================================
+
+
+[Token Check] Validating OpenGWAS token...
+[Token Check] OK - Token is valid
+[Config] Parameters saved to: /media/desk16/share/secure/MR/results/100F_eqtl_kb10_p5e6_v2/analysis_config.ini 
+
+============================================================
+STEP 0: PROCESSING CANDIDATE GENE LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+1. Loading and inspecting the gene list...
+   Original dimensions: 64 rows, 3 columns
+   Original column names: original_id, ensembl_id, formatted_exposure_id 
+   First few rows:
+  original_id      ensembl_id  formatted_exposure_id
+1       ABCC3 ENSG00000108846 eqtl-a-ENSG00000108846
+2       ACACA ENSG00000278540 eqtl-a-ENSG00000278540
+3       ACACA ENSG00000275176 eqtl-a-ENSG00000275176
+4       ACADS ENSG00000122971 eqtl-a-ENSG00000122971
+5        ACLY ENSG00000131473 eqtl-a-ENSG00000131473
+6      ACOT13 ENSG00000112304 eqtl-a-ENSG00000112304
+   ✓ Columns renamed to: 'id', 'gene'
+
+2. Cleaning and converting gene identifiers to Ensembl ID...
+   Total unique input identifiers: 64 
+   Input appears to be Ensembl IDs. Proceeding directly.
+
+3. Finalizing eQTL exposure ID list...
+   Conversion method: None (already Ensembl) 
+   Final unique eQTL exposure IDs: 64 
+   Sample of first 5 formatted exposure IDs:
+[1] "eqtl-a-ENSG00000108846" "eqtl-a-ENSG00000278540" "eqtl-a-ENSG00000275176"
+[4] "eqtl-a-ENSG00000122971" "eqtl-a-ENSG00000131473"
+
+4. Saving conversion mapping for verification...
+   ✓ ID conversion mapping saved to '08.eQTL_ID_Mapping.csv'
+   Mapping file has 64 rows.
+
+============================================================
+STEP 0 COMPLETE. Proceeding to main MR analysis loop with 64 exposures.
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+=== Exposures Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-23 10:11:28 
+Exposures: EQTL
+Total exposures to process: 64 
+Outcome: ebi-a-GCST90091033 
+===========================================
+
+
+============================================================
+ANALYSIS [1/64]: eqtl-a-ENSG00000108846
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 122 IVs
+  After EAF filter (0.01-0.99): 122 IVs
+  After F-statistic filter (> 10 ): 122 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 122 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 2
+Querying variant chunk 2 of 2
+Finding proxies for 18 SNPs in outcome ebi-a-GCST90091033
+Extracting data for 18 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 113 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000108846 || id:eqtl-a-ENSG00000108846 (eqtl-a-ENSG00000108846) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+Removing the following SNPs for being palindromic with intermediate allele frequencies:
+rs10740118, rs10761731, rs740786, rs7916868
+  Successfully harmonised 113 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q      Q_pval
+1                  MR Egger 142.0249 0.013269117
+2 Inverse variance weighted 154.0211 0.002429447
+  Selected IVW Q_pval: 0.002429447 
+  Heterogeneity detected (Q_pval = 0.00243 ) → Using RANDOM EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000108846' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (multiplicative random effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 176.4134
+
+$Pvalue
+[1] "<0.001"
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  Forest plot failed: Dimensions exceed 50 inches (`height` and `width` are specified in inches not pixels). 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000108846 completed successfully!
+
+============================================================
+ANALYSIS [2/64]: eqtl-a-ENSG00000278540
+============================================================
+
+STEP 1: Extracting instrumental variables...
+[RETRY] Attempt 1 failed: argument is of length zero - Retrying in 1 s...
+[RETRY] Attempt 2 failed: argument is of length zero - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: argument is of length zero 
+  ERROR: No significant SNPs found (p < 5e-8) 
+
+============================================================
+ANALYSIS [3/64]: eqtl-a-ENSG00000275176
+============================================================
+
+STEP 1: Extracting instrumental variables...
+[RETRY] Attempt 1 failed: argument is of length zero - Retrying in 1 s...
+[RETRY] Attempt 2 failed: argument is of length zero - Retrying in 2 s...
+[ERROR] All 3 attempts failed. Last error: argument is of length zero 
+  ERROR: No significant SNPs found (p < 5e-8) 
+
+============================================================
+ANALYSIS [4/64]: eqtl-a-ENSG00000122971
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 22 IVs
+  After EAF filter (0.01-0.99): 22 IVs
+  After F-statistic filter (> 10 ): 22 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 22 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 22 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000122971 || id:eqtl-a-ENSG00000122971 (eqtl-a-ENSG00000122971) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 22 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1                  MR Egger 2.629600 0.9999987
+2 Inverse variance weighted 4.745989 0.9999144
+  Selected IVW Q_pval: 0.9999144 
+  No significant heterogeneity (Q_pval = 1 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000122971' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 5.236743
+
+$Pvalue
+[1] 1
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000122971 completed successfully!
+
+============================================================
+ANALYSIS [5/64]: eqtl-a-ENSG00000131473
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 33 IVs
+  After EAF filter (0.01-0.99): 33 IVs
+  After F-statistic filter (> 10 ): 33 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 33 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 3 SNPs in outcome ebi-a-GCST90091033
+Extracting data for 3 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 32 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000131473 || id:eqtl-a-ENSG00000131473 (eqtl-a-ENSG00000131473) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 32 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q     Q_pval
+1                  MR Egger 27.85167 0.57829671
+2 Inverse variance weighted 48.59234 0.02307067
+  Selected IVW Q_pval: 0.02307067 
+  Heterogeneity detected (Q_pval = 0.0231 ) → Using RANDOM EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000131473' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (multiplicative random effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 50.08543
+
+$Pvalue
+[1] 0.028
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000131473 completed successfully!
+
+============================================================
+ANALYSIS [6/64]: eqtl-a-ENSG00000112304
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 47 IVs
+  After EAF filter (0.01-0.99): 47 IVs
+  After F-statistic filter (> 10 ): 47 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 47 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 8 SNPs in outcome ebi-a-GCST90091033
+Extracting data for 8 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+  Found 42 SNPs in outcome
+
+STEP 3: Harmonising data...
+Harmonising ENSG00000112304 || id:eqtl-a-ENSG00000112304 (eqtl-a-ENSG00000112304) and Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033 (ebi-a-GCST90091033)
+  Successfully harmonised 42 SNPs
+  Checking exclusivity assumption (removing outcome-associated SNPs, p < 1e-5)...
+    ✓ All SNPs pass exclusivity check (no outcome-associated SNPs)
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1                  MR Egger 31.02304 0.8447809
+2 Inverse variance weighted 32.25965 0.8336620
+  Selected IVW Q_pval: 0.833662 
+  No significant heterogeneity (Q_pval = 0.834 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+Analysing 'eqtl-a-ENSG00000112304' on 'ebi-a-GCST90091033'
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test (fixed)...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  Global Test result:
+$RSSobs
+[1] 33.06169
+
+$Pvalue
+[1] 0.863
+
+
+STEP 9: Generating plots...
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Scatter plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Funnel plot saved (PNG + PDF)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for eqtl-a-ENSG00000112304 completed successfully!
+
+============================================================
+ANALYSIS [7/64]: eqtl-a-ENSG00000106546
+============================================================
+
+STEP 1: Extracting instrumental variables...
+  Extracted 58 IVs
+  After EAF filter (0.01-0.99): 58 IVs
+  After F-statistic filter (> 10 ): 58 IVs
+
+STEP 2: Extracting outcome data...
+Extracting data for 58 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1

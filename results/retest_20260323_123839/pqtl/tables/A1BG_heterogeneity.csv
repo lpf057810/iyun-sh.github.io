@@ -1,0 +1,3 @@
+"id.exposure","id.outcome","outcome","exposure","method","Q","Q_df","Q_pval"
+"A1BG","ebi-a-GCST90091033","Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033","A1BG","MR Egger",9.4742320018512,9,0.394697937164146
+"A1BG","ebi-a-GCST90091033","Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033","A1BG","Inverse variance weighted",11.7745384519075,10,0.3004292124513

@@ -1,0 +1,4 @@
+"Exposure","Outcome","Steiger_correct_direction","Steiger_pval","Directionality_significant"
+"PTGS2","Nonalcoholic fatty liver disease","TRUE","<1e-99","YES"
+"FADS2","Nonalcoholic fatty liver disease","TRUE","4.32e-96","YES"
+"ELOVL1","Nonalcoholic fatty liver disease","TRUE","1.48e-08","YES"

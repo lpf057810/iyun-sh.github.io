@@ -1,0 +1,318 @@
+================================================================================
+MR分析日志 - Mendelian Randomization Analysis
+================================================================================
+时间戳: 2026-03-12 10:18:06
+运行ID: 20260312_101806
+脚本: run_mr.sh
+
+----------------------------------------
+输入参数
+----------------------------------------
+MR类型: traditional
+输入文件: N/A
+输出目录: /media/desk16/share/secure/MR/results/MR_traditional
+共定位分析: 0
+P值阈值: 5e-8
+KB距离: 10000
+
+----------------------------------------
+环境信息
+----------------------------------------
+工作目录: /media/desk16/share/secure/MR/scripts
+R脚本目录: /media/desk16/share/secure/MR/scripts
+
+[10:18:06] 日志文件已创建: /media/desk16/share/secure/MR/logs/MR_traditional.20260312_101806.log
+[10:18:06] 配置文件已生成: /media/desk16/share/secure/MR/results/MR_traditional/traditional.config.ini
+[10:18:06] 开始MR分析...
+[10:18:06]   类型: traditional
+[10:18:06]   输入: N/A
+[10:18:06]   输出: /media/desk16/share/secure/MR/results/MR_traditional
+[10:18:06]   共定位: 0
+[10:18:06]   P值阈值: 5e-8
+[10:18:06]   KB距离: 10000
+[10:18:06]   R2阈值: 0.001
+[10:18:06]   F统计量阈值: 10
+[10:18:06]   EAF阈值: 0.01
+[10:18:06]   最少SNPs: 3
+[10:18:06]   结局ID: ebi-a-GCST90091033
+[10:18:06] 输出目录已创建: /media/desk16/share/secure/MR/results/MR_traditional
+[10:18:06] 开始Traditional MR分析...
+✓ Loaded .Renviron from HOME (global)
+✓ JWT token loaded successfully (length: 546 characters)
+TwoSampleMR version 0.7.0 
+
+  [>] New authentication requirements: https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication.
+  [>] Major upgrades to our servers completed to improve service and stability.
+  [>] We need your help to shape our emerging roadmap!
+      Please take 2 minutes to give us feedback -
+      https://forms.office.com/e/eSr7EFAfCG
+OpenGWAS updates:
+  Date: 2024-05-17
+  [>] OpenGWAS is growing!
+  [>] Please take 2 minutes to give us feedback -
+  [>] It will help directly shape our emerging roadmap
+  [>] https://forms.office.com/e/eSr7EFAfCG
+
+Attaching package: ‘ieugwasr’
+
+The following object is masked from ‘package:TwoSampleMR’:
+
+    ld_matrix
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+================================================================================
+  MR Traditional Analysis
+  Started: 2026-03-12 10:18:08 
+  Exposure type: both 
+  Output: /media/desk16/share/secure/MR/results/MR_traditional 
+================================================================================
+
+[ 2026-03-12 10:18:08 ] JWT token loaded, starting with: eyJhbGciOiJSUzI1NiIsImtpZCI6Im ...
+Warning message:
+In dir.create(output_dir, recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/MR_traditional' already exists
+Warning message:
+In dir.create(file.path(output_dir, "tables"), recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/MR_traditional/tables' already exists
+Warning message:
+In dir.create(file.path(output_dir, "figures"), recursive = TRUE) :
+  '/media/desk16/share/secure/MR/results/MR_traditional/figures' already exists
+[ 2026-03-12 10:18:08 ] Outcome: finn-b-TRAUMBRAIN_NONCONCUS 
+[ 2026-03-12 10:18:08 ] P-value threshold: 5e-08 
+
+======================================================================
+Processing: Self-harm 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+[ 2026-03-12 10:18:09 ] --- ukb-d-20480 ---
+[ 2026-03-12 10:18:09 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:18:09 ] No SNPs extracted
+
+[ 2026-03-12 10:18:09 ] --- ukb-d-20554_1 ---
+[ 2026-03-12 10:18:10 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:18:10 ] No SNPs extracted
+
+[ 2026-03-12 10:18:10 ] --- ukb-e-20513_CSA ---
+[ 2026-03-12 10:18:10 ] SNPs extracted: 10 
+Extracting data for 10 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 3 SNPs in outcome finn-b-TRAUMBRAIN_NONCONCUS
+Extracting data for 3 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Recent thoughts of suicide or self-harm || id:ukb-e-20513_CSA (ukb-e-20513_CSA) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:18:16 ] F-statistics: mean= 35.98 , min= 30.15 , max= 47.05 
+[ 2026-03-12 10:18:16 ] Heterogeneity methods: MR Egger, Inverse variance weighted 
+                     method        Q    Q_pval
+1                  MR Egger 1.316407 0.9707453
+2 Inverse variance weighted 3.214859 0.8644402
+[ 2026-03-12 10:18:16 ] No significant heterogeneity → Using FIXED EFFECTS IVW
+Analysing 'ukb-e-20513_CSA' on 'finn-b-TRAUMBRAIN_NONCONCUS'
+Recent thoughts of suicide or self-harm || id:ukb-e-20513_CSA - severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS
+[ 2026-03-12 10:18:30 ] Steiger test failed: argument "r_exp" is missing, with no default 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:18:31 ] Scatter plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:18:32 ] Forest plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:18:33 ] Funnel plot failed: failed to find or load PDF CID font 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:18:34 ] Leave-one-out plot failed: invalid font type 
+
+[ 2026-03-12 10:18:34 ] --- ukb-d-20554_6 ---
+[ 2026-03-12 10:18:34 ] SNPs extracted: 1 
+Extracting data for 1 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Actions taken following self-harm: Receive help from friends / family / neighbours || id:ukb-d-20554_6 (ukb-d-20554_6) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:18:35 ] F-statistics: mean= 39.86 , min= 39.86 , max= 39.86 
+[ 2026-03-12 10:18:35 ] Not enough SNPs after harmonisation: 1 
+
+[ 2026-03-12 10:18:35 ] --- ukb-d-20553_5 ---
+[ 2026-03-12 10:18:35 ] SNPs extracted: 3 
+Extracting data for 3 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 1 SNPs in outcome finn-b-TRAUMBRAIN_NONCONCUS
+Extracting data for 1 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Methods of self-harm used: Self-injury such as self-cutting, scratching or hitting, etc. || id:ukb-d-20553_5 (ukb-d-20553_5) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:18:37 ] F-statistics: mean= 34.34 , min= 31.09 , max= 37.59 
+[ 2026-03-12 10:18:37 ] Not enough SNPs after harmonisation: 2 
+
+[ 2026-03-12 10:18:37 ] --- ukb-e-20513_AFR ---
+[ 2026-03-12 10:18:37 ] SNPs extracted: 12 
+Extracting data for 12 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 1 SNPs in outcome finn-b-TRAUMBRAIN_NONCONCUS
+Extracting data for 1 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Recent thoughts of suicide or self-harm || id:ukb-e-20513_AFR (ukb-e-20513_AFR) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:18:41 ] F-statistics: mean= 33.16 , min= 29.87 , max= 41.88 
+[ 2026-03-12 10:18:41 ] Heterogeneity methods: MR Egger, Inverse variance weighted 
+                     method        Q    Q_pval
+1                  MR Egger 7.435335 0.5918914
+2 Inverse variance weighted 7.528614 0.6747739
+[ 2026-03-12 10:18:41 ] No significant heterogeneity → Using FIXED EFFECTS IVW
+Analysing 'ukb-e-20513_AFR' on 'finn-b-TRAUMBRAIN_NONCONCUS'
+Recent thoughts of suicide or self-harm || id:ukb-e-20513_AFR - severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS
+[ 2026-03-12 10:18:59 ] Steiger test failed: argument "r_exp" is missing, with no default 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:00 ] Scatter plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:01 ] Forest plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:02 ] Funnel plot failed: failed to find or load PDF CID font 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:03 ] Leave-one-out plot failed: invalid font type 
+
+[ 2026-03-12 10:19:03 ] --- ukb-d-20554_5 ---
+[ 2026-03-12 10:19:03 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:19:03 ] No SNPs extracted
+
+[ 2026-03-12 10:19:03 ] --- ukb-e-20485_CSA ---
+[ 2026-03-12 10:19:03 ] SNPs extracted: 4 
+Extracting data for 4 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Finding proxies for 1 SNPs in outcome finn-b-TRAUMBRAIN_NONCONCUS
+Extracting data for 1 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Ever contemplated self-harm || id:ukb-e-20485_CSA (ukb-e-20485_CSA) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:19:06 ] F-statistics: mean= 34.27 , min= 30.74 , max= 38.11 
+[ 2026-03-12 10:19:06 ] Heterogeneity methods: MR Egger, Inverse variance weighted 
+                     method         Q    Q_pval
+1                  MR Egger 0.9156524 0.3386191
+2 Inverse variance weighted 0.9355109 0.6264067
+[ 2026-03-12 10:19:06 ] No significant heterogeneity → Using FIXED EFFECTS IVW
+Analysing 'ukb-e-20485_CSA' on 'finn-b-TRAUMBRAIN_NONCONCUS'
+Ever contemplated self-harm || id:ukb-e-20485_CSA - severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS
+[ 2026-03-12 10:19:10 ] MR-PRESSO failed: Not enough intrumental variables 
+[ 2026-03-12 10:19:10 ] Steiger test failed: argument "r_exp" is missing, with no default 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:10 ] Scatter plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:11 ] Forest plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:12 ] Funnel plot failed: failed to find or load PDF CID font 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:13 ] Leave-one-out plot failed: invalid font type 
+
+[ 2026-03-12 10:19:13 ] --- finn-b-VWXY20_SUICI_OTHER_INTENTI_SELF_H ---
+[ 2026-03-12 10:19:13 ] SNPs extracted: 2 
+Extracting data for 2 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Suicide or other Intentional self-harm || id:finn-b-VWXY20_SUICI_OTHER_INTENTI_SELF_H (finn-b-VWXY20_SUICI_OTHER_INTENTI_SELF_H) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:19:14 ] F-statistics: mean= 94.08 , min= 30.29 , max= 157.87 
+[ 2026-03-12 10:19:14 ] Not enough SNPs after harmonisation: 2 
+
+[ 2026-03-12 10:19:14 ] --- ukb-d-20553_4 ---
+[ 2026-03-12 10:19:14 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:19:14 ] No SNPs extracted
+
+[ 2026-03-12 10:19:14 ] --- ukb-d-20554_3 ---
+[ 2026-03-12 10:19:15 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:19:15 ] No SNPs extracted
+
+[ 2026-03-12 10:19:15 ] --- ukb-d-20486 ---
+[ 2026-03-12 10:19:15 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:19:15 ] No SNPs extracted
+
+======================================================================
+Processing: Violence 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
+[ 2026-03-12 10:19:15 ] --- ukb-e-20523_AFR ---
+[ 2026-03-12 10:19:15 ] IV extraction failed: argument is of length zero 
+[ 2026-03-12 10:19:15 ] No SNPs extracted
+
+[ 2026-03-12 10:19:15 ] --- ukb-e-20523_CSA ---
+[ 2026-03-12 10:19:16 ] SNPs extracted: 5 
+Extracting data for 5 SNP(s) from 1 GWAS(s)
+Querying id chunk 1 of 1
+Querying variant chunk 1 of 1
+Harmonising Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_CSA (ukb-e-20523_CSA) and severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS (finn-b-TRAUMBRAIN_NONCONCUS)
+[ 2026-03-12 10:19:17 ] F-statistics: mean= 30.44 , min= 29.75 , max= 31.23 
+[ 2026-03-12 10:19:17 ] Heterogeneity methods: MR Egger, Inverse variance weighted 
+                     method         Q      Q_pval
+1                  MR Egger  1.494937 0.683439271
+2 Inverse variance weighted 13.514385 0.009017645
+[ 2026-03-12 10:19:17 ] Heterogeneity detected → Using RANDOM EFFECTS IVW
+Analysing 'ukb-e-20523_CSA' on 'finn-b-TRAUMBRAIN_NONCONCUS'
+Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_CSA - severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS
+[ 2026-03-12 10:19:27 ] Steiger test failed: argument "r_exp" is missing, with no default 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:28 ] Scatter plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:29 ] Forest plot failed: invalid font type 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:30 ] Funnel plot failed: failed to find or load PDF CID font 
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+[ 2026-03-12 10:19:31 ] Leave-one-out plot failed: invalid font type 
+There were 50 or more warnings (use warnings() to see the first 50)
+
+================================================================================
+  Traditional MR Analysis Complete!
+  Finished: 2026-03-12 10:19:31 
+  Success: 4 / 14 
+  Results saved to: /media/desk16/share/secure/MR/results/MR_traditional/tables 
+================================================================================
+[10:19:31] MR分析完成!
+[10:19:31] 开始生成Word报告...
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+================================================================================
+  MR分析报告生成器
+  类型: traditional 
+  时间戳: 20260312_101806 
+================================================================================
+
+
+================================================================================
+报告已生成： /media/desk16/share/secure/MR/report/MR_traditional.20260312_101806.docx 
+================================================================================
+[10:19:32] Word报告已生成: /media/desk16/share/secure/MR/report/MR_traditional.20260312_101806.docx

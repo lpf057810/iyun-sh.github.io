@@ -1,0 +1,2 @@
+"id.exposure","id.outcome","outcome","exposure","egger_intercept","se","pval"
+"ukb-e-20523_AFR","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_AFR",0.000402141224159426,0.0292722278370076,0.989338742475015

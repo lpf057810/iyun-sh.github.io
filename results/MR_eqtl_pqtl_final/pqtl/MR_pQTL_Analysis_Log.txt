@@ -1,0 +1,177 @@
+=== pQTL Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-12 11:29:13 
+Analysis Type: pQTL (Protein Quantitative Trait Loci)
+Total pQTL exposures to process: 2 
+Outcomes: ebi-a-GCST90091033 
+Using rsIDs from 'rsids2' column for SNP matching
+=================================================
+
+
+============================================================
+ANALYSIS [1/2]: AKR1B1
+File: AKR1B1_P15121_OID21244_v1_Oncology_expo_rt.txt
+============================================================
+
+STEP 1: Reading and processing pQTL file (using rsIDs)...
+  File loaded successfully: 2 rows
+  Significant SNPs (p < 5e-8): 2 
+  Extracting rsIDs from 'rsids2' column...
+  SNPs with valid rsIDs: 2 
+  Sample rsIDs: rs2229542, rs782545 
+  After EAF filter (0.01-0.99): 2 IVs
+  After F-statistic filter (> 10 ): 2 IVs
+  WARNING: Fewer than 3 IVs remaining
+  After removing duplicates: 2 unique IVs
+
+STEP 2: Extracting outcome data...
+  Extracting data for 2 SNP(s) from outcome(s): ebi-a-GCST90091033 
+  Found 2 SNPs in outcome(s)
+
+STEP 3: Harmonising data...
+  Successfully harmonised 2 SNPs
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q    Q_pval
+1 Inverse variance weighted 1.158228 0.2818332
+  Selected IVW Q_pval: 0.2818332 
+  No significant heterogeneity (Q_pval = 0.282 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects) 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+  SKIP: Not enough SNPs for MR-PRESSO (need at least 4)
+
+STEP 9: Generating plots...
+  Scatter plot failed: invalid font type 
+  Forest plot failed: invalid font type 
+  Funnel plot failed: failed to find or load PDF CID font 
+  Leave-one-out plot failed: invalid font type 
+
+STEP 10: Saving results...
+
+✓ Analysis for AKR1B1 completed successfully!
+
+============================================================
+ANALYSIS [2/2]: COMT
+File: COMT_P21964_OID20086_v1_Cardiometabolic_expo_rt.txt
+============================================================
+
+STEP 1: Reading and processing pQTL file (using rsIDs)...
+  File loaded successfully: 50 rows
+  Significant SNPs (p < 5e-8): 50 
+  Extracting rsIDs from 'rsids2' column...
+  SNPs with valid rsIDs: 50 
+  Sample rsIDs: rs41295421, rs9680615, rs9606164 
+  After EAF filter (0.01-0.99): 50 IVs
+  After F-statistic filter (> 10 ): 50 IVs
+  After removing duplicates: 50 unique IVs
+
+STEP 2: Extracting outcome data...
+  Extracting data for 50 SNP(s) from outcome(s): ebi-a-GCST90091033 
+  Found 44 SNPs in outcome(s)
+
+STEP 3: Harmonising data...
+  Successfully harmonised 44 SNPs
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method        Q     Q_pval
+1                  MR Egger 56.16497 0.07070846
+2 Inverse variance weighted 58.52804 0.05740133
+  Selected IVW Q_pval: 0.05740133 
+  No significant heterogeneity (Q_pval = 0.0574 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  Scatter plot failed: invalid font type 
+  Forest plot failed: invalid font type 
+  Funnel plot failed: failed to find or load PDF CID font 
+  Leave-one-out plot failed: invalid font type 
+
+STEP 10: Saving results...
+
+✓ Analysis for COMT completed successfully!
+
+============================================================
+STEP 4: SAVING SUCCESSFULLY ANALYZED PROTEINS LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+  Total proteins successfully analyzed: 2 
+  ✓ Successfully analyzed proteins list saved to: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/pqtl_successful_genes.csv 
+
+  Successfully analyzed proteins ( 2 ):
+  1. AKR1B1
+  2. COMT
+
+============================================================
+COMPREHENSIVE pQTL MR ANALYSIS REPORT
+============================================================
+
+STUDY OVERVIEW:
+• Analysis Type: pQTL (Protein Quantitative Trait Loci)
+• Candidate genes processed: 4 
+• pQTL files found: 1812 
+• Initially matched proteins: 2 
+• Successfully analyzed: 2 
+• Failed: 0 
+• Outcomes: ebi-a-GCST90091033 
+
+ANALYSIS STATUS SUMMARY:
+
+Success 
+      2 
+
+MAIN MR RESULTS (IVW method) - SUCCESSFUL ANALYSES:
+  protein n_snps    beta     se p_value    OR          CI_95
+1  AKR1B1      2 -0.1689 0.1238   0.173 0.845 [0.663, 1.077]
+2    COMT     44 -0.0546 0.0220  0.0132 0.947 [0.907, 0.989]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+2 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 1 / 2 
+Significant proteins:
+  protein    OR          CI_95 p_value
+2    COMT 0.947 [0.907, 0.989]  0.0132
+
+OUTPUT DIRECTORY STRUCTURE:
+1. Tables directory: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/tables 
+2. Figures directory: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/figures 
+3. Initial matching: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/pqtl_genes.csv 
+4. Successful analyses: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/pqtl_successful_genes.csv 
+5. Analysis log: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/MR_pQTL_Analysis_Log.txt 
+6. Main results summary: /media/desk16/share/secure/MR/results/MR_eqtl_pqtl_final/pqtl/tables/pqtl_main_results_summary.csv 
+
+============================================================
+STEP 5: GENERATING STANDARD OUTPUT FILES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Processing 2 analyses to generate summary files...
+Saving integrated results...
+  ✓ integrated_mr_results_summary.csv saved
+  ✓ significant_mr_results_summary.csv saved
+  ✓ concise_mr_results_summary.csv saved
+  ✓ mr_heterogeneity_pleiotropy_summary.csv saved
+  ✓ pqtl_successful_genes.csv verified
+
+✓ All standard output files generated successfully!
+
+Analysis completed at: 2026-03-12 11:30:28 

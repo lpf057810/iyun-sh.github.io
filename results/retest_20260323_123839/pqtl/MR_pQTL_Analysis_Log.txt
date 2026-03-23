@@ -1,0 +1,114 @@
+=== pQTL Mendelian Randomization Analysis Log ===
+Start Time: 2026-03-23 12:49:52 
+Analysis Type: pQTL (Protein Quantitative Trait Loci)
+Total pQTL exposures to process: 1 
+Outcomes: ebi-a-GCST90091033 
+Using rsIDs from 'rsids2' column for SNP matching
+=================================================
+
+
+============================================================
+ANALYSIS [1/1]: A1BG
+File: A1BG_P04217_OID30771_v1_Inflammation_II_expo_rt.txt
+============================================================
+
+STEP 1: Reading and processing pQTL file (using rsIDs)...
+  File loaded successfully: 11 rows
+  Significant SNPs (p < 5e-8): 11 
+  Extracting rsIDs from 'rsids2' column...
+  SNPs with valid rsIDs: 11 
+  Sample rsIDs: rs2885060, rs114853328, rs45601339 
+  After EAF filter (0.01-0.99): 11 IVs
+  After F-statistic filter (> 10 ): 11 IVs
+  After removing duplicates: 11 unique IVs
+
+STEP 2: Extracting outcome data...
+  Extracting data for 11 SNP(s) from outcome(s): ebi-a-GCST90091033 
+  Found 11 SNPs in outcome(s)
+
+STEP 3: Harmonising data...
+  Successfully harmonised 11 SNPs
+
+STEP 4: Testing heterogeneity to select MR method...
+  Heterogeneity methods: MR Egger, Inverse variance weighted 
+  Heterogeneity results:
+                     method         Q    Q_pval
+1                  MR Egger  9.474232 0.3946979
+2 Inverse variance weighted 11.774538 0.3004292
+  Selected IVW Q_pval: 0.3004292 
+  No significant heterogeneity (Q_pval = 0.3 ) → Using FIXED EFFECTS IVW
+
+STEP 5: Running MR analysis...
+  Methods used: Inverse variance weighted (fixed effects), MR Egger, Weighted median, Weighted mode, Simple mode 
+
+STEP 6: Pleiotropy test...
+
+STEP 7: Steiger directionality test...
+  Adding r values for Steiger test...
+  Steiger test completed successfully
+
+STEP 8: MR-PRESSO analysis...
+
+STEP 9: Generating plots...
+  ✓ Scatter plot saved (PNG + PDF)
+  ✓ Forest plot saved (PNG + PDF + rsID.csv)
+  ✓ Funnel plot saved (PNG + PDF)
+  ✓ Leave-one-out plot saved (PNG + PDF)
+
+STEP 10: Saving results...
+
+✓ Analysis for A1BG completed successfully!
+
+============================================================
+STEP 4: SAVING SUCCESSFULLY ANALYZED PROTEINS LIST
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+  Total proteins successfully analyzed: 1 
+  ✓ Successfully analyzed proteins list saved to: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/09.pQTL_Successful_Genes.csv 
+
+  Successfully analyzed proteins ( 1 ):
+  1. A1BG
+
+============================================================
+COMPREHENSIVE pQTL MR ANALYSIS REPORT
+============================================================
+
+STUDY OVERVIEW:
+• Analysis Type: pQTL (Protein Quantitative Trait Loci)
+• Candidate genes processed: 1 
+• pQTL files found: 1812 
+• Initially matched proteins: 1 
+• Successfully analyzed: 1 
+• Failed: 0 
+• Outcomes: ebi-a-GCST90091033 
+
+ANALYSIS STATUS SUMMARY:
+
+Success 
+      1 
+
+MAIN MR RESULTS (IVW method) - SUCCESSFUL ANALYSES:
+  protein n_snps   beta     se p_value    OR         CI_95
+1    A1BG     11 0.0509 0.0576   0.377 1.052 [0.94, 1.178]
+                                method_used
+1 Inverse variance weighted (fixed effects)
+
+Significant results (p < 0.05): 0 / 1 
+
+OUTPUT DIRECTORY STRUCTURE:
+1. Tables directory: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/tables 
+2. Figures directory: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/figures 
+3. Initial matching: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/08.pQTL_ID_Mapping.csv 
+4. Successful analyses: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/09.pQTL_Successful_Genes.csv 
+5. Analysis log: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/MR_pQTL_Analysis_Log.txt 
+6. Main results summary: /media/desk16/share/secure/MR/results/retest_20260323_123839/pqtl/tables/pqtl_main_results_summary.csv 
+
+============================================================
+STEP 5: GENERATING STANDARD OUTPUT FILES
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Processing 1 analyses to generate summary files...
+Saving integrated results...
+  Outcome name: Nonalcoholic fatty liver disease 
+
+Saving merged format files (00-07)...
+  ✓ 00.Complete_MR_Results.csv saved
+  ✓ 01.MR_Results_All_Genes.csv saved

@@ -1,0 +1,7 @@
+"protein","n_snps","beta","se","p_value","OR","CI_95","method_used"
+"ACOT13",2,0.0757,0.1939,"0.696",1.079,"[0.738, 1.577]","Inverse variance weighted (fixed effects)"
+"GGT1",21,0.1616,0.0413,"9e-05",1.175,"[1.084, 1.274]","Inverse variance weighted (fixed effects)"
+"SMPD1",25,0.0568,0.0464,"0.221",1.058,"[0.966, 1.159]","Inverse variance weighted (fixed effects)"
+"FABP3",5,0.0597,0.1335,"0.655",1.062,"[0.817, 1.379]","Inverse variance weighted (fixed effects)"
+"GC",59,0.0144,0.0105,"0.169",1.015,"[0.994, 1.036]","Inverse variance weighted (fixed effects)"
+"FABP4",2,-0.4583,0.1463,"0.00173",0.632,"[0.475, 0.842]","Inverse variance weighted (fixed effects)"

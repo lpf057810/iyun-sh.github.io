@@ -1,0 +1,2 @@
+"id.exposure","id.outcome","exposure","outcome","snp_r2.exposure","snp_r2.outcome","correct_causal_direction","steiger_pval"
+"eqtl-a-ENSG00000115318","ebi-a-GCST90018894","eqtl-a-ENSG00000115318","Parkinson's disease || id:ebi-a-GCST90018894",0.0830080039575787,0.00424526174352038,TRUE,7.71934160851092e-274

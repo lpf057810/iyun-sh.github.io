@@ -1,0 +1,1 @@
+# 保留 report/ 目录；运行后生成的 Word 报告由 .gitignore 忽略

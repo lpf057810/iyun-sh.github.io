@@ -17,6 +17,8 @@ Nomogram/
 └── report/                        # Word 报告
 ```
 
+仓库中 `results/`、`report/`、`logs/` 三个目录会随代码一并提交（内含 `.gitkeep` 占位），本地运行产生的输出文件由 `.gitignore` 忽略，不进入版本库。
+
 ## 命令行使用
 
 ```bash

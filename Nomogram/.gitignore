@@ -1,0 +1,17 @@
+# 运行后生成的文件（目录结构由 .gitkeep 保留）
+results/*
+!results/.gitkeep
+report/*
+!report/.gitkeep
+logs/*
+!logs/.gitkeep
+
+Rplots.pdf
+*.qs2
+*.qs
+_report_params.RData
+.20*
+
+# test_data 下运行产生的图（CSV 仍纳入版本）
+test_data/**/*.pdf
+test_data/**/*.png

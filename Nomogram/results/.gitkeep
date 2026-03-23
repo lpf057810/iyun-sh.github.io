@@ -1,0 +1,1 @@
+# 保留 results/ 目录；运行后生成的分析结果由 .gitignore 忽略

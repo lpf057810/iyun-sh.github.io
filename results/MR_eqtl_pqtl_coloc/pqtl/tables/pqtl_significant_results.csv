@@ -1,2 +1,0 @@
-"protein","n_snps","beta","se","p_value","OR","CI_95","method_used"
-"COMT",44,-0.0546,0.022,"0.0132",0.947,"[0.907, 0.989]","Inverse variance weighted (fixed effects)"

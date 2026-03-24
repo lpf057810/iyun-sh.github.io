@@ -19,14 +19,16 @@ MR/
 │       └── MR.config.example.ini  # Configuration template
 ├── update_opengwas_token.sh   # Quick token update script
 ├── logs/                      # Log files (auto-generated)
-├── result/                    # Analysis results
+├── results/                   # Analysis results（仓库内仅占位 .gitkeep）
 │   ├── MR_eqtl/               # eQTL results
 │   ├── MR_pqtl/              # pQTL results
 │   ├── MR_eqtl_pqtl/         # Combined eQTL+pQTL results
 │   ├── MR_traditional/        # Traditional MR results
 │   └── coloc/                # Colocalization results
-└── report/                   # Word reports (auto-generated)
+└── report/                   # Word reports（仓库内仅占位 .gitkeep）
 ```
+
+本仓库中 **`scripts/`、`templates/`、配置文件与入口脚本为完整内容**；**`results/`、`report/`、`logs/` 仅保留目录结构**（`.gitkeep`），本地运行生成的文件由 `.gitignore` 忽略。
 
 ## Usage
 

@@ -31,6 +31,10 @@ FSTAT_THRESHOLD="10"
 EAF_THRESHOLD="0.01"
 MIN_SNPS="3"
 OUTCOME_ID="ebi-a-GCST90091033"
+EXP1_ID="ieu-a-2"
+EXP1_NAME="BMI"
+EXP2_ID="ieu-a-300"
+EXP2_NAME="HDL-Cholesterol"
 PQTLDIR="/media/desk16/iyunlpf/NAF/pqtl/data/cis_clump"
 HELP=0
 
@@ -73,6 +77,10 @@ OPTIONS:
     -e, --eaf VALUE       EAF threshold (default: 0.01)
     -m, --minsnps VALUE   Minimum SNPs (default: 3)
     -d, --outcome VALUE   Outcome GWAS ID (default: ebi-a-GCST90091033)
+    --exp1-id VALUE      Exposure1 GWAS ID (default: ieu-a-2 for BMI)
+    --exp1-name VALUE    Exposure1 display name (default: BMI)
+    --exp2-id VALUE      Exposure2 GWAS ID (default: ieu-a-300 for HDL)
+    --exp2-name VALUE    Exposure2 display name (default: HDL-Cholesterol)
     -q, --pqtl-dir VALUE pQTL data directory (default: /media/desk16/iyunlpf/NAF/pqtl/data/cis_clump)
     -h, --help            Show this help message
 
@@ -86,8 +94,14 @@ EXAMPLES:
     # Run pQTL analysis with colocalization
     $(basename "$0") -t pqtl -i /path/to/genes.csv -o result/MR_pqtl -c 1
 
-    # Run traditional MR
+    # Run traditional MR (uses default: BMI+HDL vs NAFLD)
     $(basename "$0") -t traditional -o result/MR_traditional
+
+    # Run traditional MR with custom exposure/outcome
+    $(basename "$0") -t traditional -o result/MR_traditional \
+        --exp1-id ieu-a-2 --exp1-name "BMI" \
+        --exp2-id ieu-a-300 --exp2-name "HDL" \
+        -d ebi-a-GCST90091033
 
 EOF
 }
@@ -170,6 +184,22 @@ parse_args() {
                 ;;
             -d|--outcome)
                 OUTCOME_ID="$2"
+                shift 2
+                ;;
+            --exp1-id)
+                EXP1_ID="$2"
+                shift 2
+                ;;
+            --exp1-name)
+                EXP1_NAME="$2"
+                shift 2
+                ;;
+            --exp2-id)
+                EXP2_ID="$2"
+                shift 2
+                ;;
+            --exp2-name)
+                EXP2_NAME="$2"
                 shift 2
                 ;;
             -q|--pqtl-dir)
@@ -382,7 +412,12 @@ run_mr() {
                 --kb "$kb" \
                 --r2 "$r2" \
                 --fstat "$fstat" \
-                --minsnps "$minsnps" \
+                --outcome "$OUTCOME_ID" \
+                --exp1-id "$EXP1_ID" \
+                --exp1-name "$EXP1_NAME" \
+                --exp2-id "$EXP2_ID" \
+                --exp2-name "$EXP2_NAME" \
+                --minsnps "$MIN_SNPS" \
                 --timestamp "$TIMESTAMP" \
                 2>&1 | tee -a "$LOG_FILE"
             ;;

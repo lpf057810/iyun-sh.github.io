@@ -1,3 +1,0 @@
-"id.exposure","id.outcome","outcome","exposure","method","Q","Q_df","Q_pval"
-"ukb-e-20513_CSA","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Recent thoughts of suicide or self-harm || id:ukb-e-20513_CSA","MR Egger",1.31640719412398,6,0.970745288557505
-"ukb-e-20513_CSA","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Recent thoughts of suicide or self-harm || id:ukb-e-20513_CSA","Inverse variance weighted",3.21485853181784,7,0.864440197986229

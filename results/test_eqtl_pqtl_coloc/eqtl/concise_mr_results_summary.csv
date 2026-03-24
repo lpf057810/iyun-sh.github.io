@@ -1,2 +1,0 @@
-"Rank","Gene_Symbol","Ensembl_ID","n_SNPs","IVW_OR","IVW_OR_95CI","IVW_Pvalue","IVW_Significant","IVW_Direction","Directionality_Significant","Pleiotropy_Pass","Heterogeneity_P","Pleiotropy_P","Steiger_Correct","Steiger_P"
-1,"CCL2","ENSG00000108691",10,1.323,"1.126-1.555","0.0006785","YES","Risk","YES","YES","0.992","0.312161","TRUE","1.76e-11"

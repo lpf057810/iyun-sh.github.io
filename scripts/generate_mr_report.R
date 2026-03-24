@@ -520,23 +520,7 @@ if (file.exists(success_file)) {
   cat("Loaded successful genes from:", success_file, "\n")
 }
 
-# 方法精简版（核心包 + 关键参数）
-pkg_tsmr <- tryCatch(as.character(utils::packageVersion("TwoSampleMR")), error = function(e) "unknown")
-pkg_mrpresso <- tryCatch(as.character(utils::packageVersion("MRPRESSO")), error = function(e) "unknown")
-r_ver <- as.character(getRversion())
-exposure_term <- if (analysis_type == "traditional") "暴露因素" else if (analysis_type == "pqtl") "pQTL特征" else "候选基因"
-method_text <- paste0(
-  "本研究采用R（v", r_ver, "，https://www.r-project.org）与TwoSampleMR（v", pkg_tsmr, "，https://mrcieu.github.io/TwoSampleMR/）开展双样本MR分析，以",
-  exposure_term, "为暴露、疾病为结局。工具变量筛选参数为P<", params$pval, "、r2<", params$r2, "、kb=", params$kb, "、F>", params$fstat, "、MAF>", params$eaf,
-  "，并进行harmonise_data协调。主分析采用IVW（P<0.05），结合Cochran Q、MR-Egger及MR-PRESSO（v", pkg_mrpresso, "，https://github.com/rondolab/MR-PRESSO）进行稳健性评估，并辅以leave-one-out和Steiger方向检验。"
-)
-doc <- doc %>%
-  body_add_mixed_heading("1.1 方法概述", font_size = 12, bold = TRUE) %>%
-  body_add_mixed_para(method_text) %>%
-  body_add_empty()
-
-# 旧版长方法段保留但不执行
-if (FALSE) {
+# 根据分析类型选择方法文本
 if (analysis_type == "eqtl") {
   doc <- doc %>%
     body_add_mixed_heading("1.1 GWAS数据获取", font_size = 12, bold = TRUE) %>%
@@ -630,8 +614,6 @@ if (analysis_type == "eqtl") {
     body_add_mixed_para("H4：表型1（GWAS）和表型2（eQTL/pQTL）与某个基因组区域的SNP位点显著相关，且由同一个因果变异位点驱动。") %>%
     body_add_mixed_para("PP.H4.abf值大于0.6认为共定位阳性（60%概率由同一个连锁区间的SNP突变影响了两个表型，且由同一个因果变异位点驱动）。选择PP.H4>0.6的基因记作候选关键基因进行后续分析。") %>%
     body_add_empty()
-}
-
 }
 
 # ========== 2. 结果 ==========
@@ -777,7 +759,7 @@ if (is_traditional) {
       border(part = "header", border.bottom = officer::fp_border(width = 0.5, color = "black")) %>%
       width(j = 1:6, width = c(1.1, 0.8, 2.4, 0.5, 0.8, 0.7))
 
-    doc <- doc %>% body_add_flextable(ft, align = "center")
+    doc <- doc %>% body_add_flextable(ft)
     # 表1内容解释
     doc <- doc %>% body_add_empty()
     table1_ivw_sig <- if (nrow(table1_df) > 0) {
@@ -870,7 +852,7 @@ if (is_traditional) {
              i = nrow(table1_df)) %>%
       width(j = 1:6, width = c(1.0, 0.7, 1.5, 0.5, 0.8, 0.7))
 
-    doc <- doc %>% body_add_flextable(ft, align = "center")
+    doc <- doc %>% body_add_flextable(ft)
     # 表1内容解释
     doc <- doc %>% body_add_empty()
     table1_ivw_sig <- if ("Method" %in% colnames(mr01_results_for_table)) {
@@ -968,7 +950,7 @@ if (has_het_data) {
              i = nrow(sens_df)) %>%
       width(j = 1:8, width = c(1.0, 0.7, 1.5, 0.8, 0.5, 0.8, 0.8, 0.8))
 
-    doc <- doc %>% body_add_flextable(ft, align = "center")
+    doc <- doc %>% body_add_flextable(ft)
     # 表2内容解释
     doc <- doc %>% body_add_empty()
     # n_het_pass 只算 IVW 行
@@ -1118,11 +1100,7 @@ for (g_idx in seq_along(target_genes)) {
       figure_count <<- figure_count + 1
       fig_num <- figure_count
 
-      img_block <- fpar(
-        external_img(src = found_file, width = 5, height = 4),
-        fp_p = fp_par(text.align = "center")
-      )
-      doc <- doc %>% body_add_fpar(value = img_block)
+      doc <- doc %>% body_add_img(src = found_file, width = 5, height = 4, style = "Normal")
       doc <- doc %>% body_add_mixed_figure_caption(paste0("图", fig_num, "：", plot_titles[p_idx]))
       doc <- doc %>% body_add_mixed_figure_caption(paste0("图注：", plot_descs[[p_idx]]))
 

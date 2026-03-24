@@ -1,2 +1,0 @@
-"id.exposure","id.outcome","outcome","exposure","method","nsnp","b","se","pval","lo_ci","up_ci","or","or_lci95","or_uci95","n_snps","pqtl_file"
-"ACOT13","ebi-a-GCST90091033","ebi-a-GCST90091033","ACOT13","Inverse variance weighted (fixed effects)",2,0.0756504964081271,0.193942051240546,0.696486614003871,-0.304475924023343,0.455776916839597,1.07858553875357,0.737509784289207,1.57739841448956,2,"ACOT13_Q9NPJ3_OID31522_v1_Oncology_II_expo_rt.txt"

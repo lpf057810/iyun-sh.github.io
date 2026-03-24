@@ -108,6 +108,14 @@ option_list <- list(
               help = "EAF threshold [default %default]"),
   make_option(c("-d", "--outcome"), type = "character", default = "ebi-a-GCST90091033",
               help = "Outcome GWAS ID [default %default]"),
+  make_option(c("--exp1-id"), type = "character", default = "ieu-a-2",
+              help = "Exposure1 GWAS ID (e.g. ieu-a-2 for BMI) [default %default]"),
+  make_option(c("--exp1-name"), type = "character", default = "BMI",
+              help = "Exposure1 display name [default %default]"),
+  make_option(c("--exp2-id"), type = "character", default = "ieu-a-300",
+              help = "Exposure2 GWAS ID (e.g. ieu-a-300 for HDL) [default %default]"),
+  make_option(c("--exp2-name"), type = "character", default = "HDL-Cholesterol",
+              help = "Exposure2 display name [default %default]"),
   make_option(c("-m", "--minsnps"), type = "character", default = "3",
               help = "Minimum number of SNPs [default %default]"),
   make_option(c("-T", "--token"), type = "character", default = NULL,
@@ -133,7 +141,7 @@ library(MRPRESSO)
 library(ggsci)
 library(showtext)
 showtext_auto()
-showtext_opts(dpi = 96)
+showtext_opts(dpi = 300)
 font_add("Liberation Sans", regular = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", bold = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", italic = "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf", bolditalic = "/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf")
 
 # Timestamp function
@@ -305,17 +313,12 @@ cat("[Config] Parameters saved to:", config_file, "\n")
 # Exposure configurations
 exposure_configs <- list(
   exposure1 = list(
-    id = c(
-      "ukb-d-20480"
-    ),
-    name = "Self-harm"
+    id = opt$exp1_id,
+    name = opt$exp1_name
   ),
   exposure2 = list(
-    id = c(
-      "ukb-e-20523_AFR",
-      "ukb-e-20523_CSA"
-    ),
-    name = "Violence"
+    id = opt$exp2_id,
+    name = opt$exp2_name
   )
 )
 
@@ -328,7 +331,7 @@ if (tolower(opt$type) == "exposure1") {
   exposures_to_run <- c("exposure1", "exposure2")
 }
 
-outcome_id <- "finn-b-TRAUMBRAIN_NONCONCUS"
+outcome_id <- opt$outcome
 
 # MR parameters
 params <- list(
@@ -372,7 +375,10 @@ analysis_summary <- data.frame(
   pleiotropy_pass = character(),
   three_filter_pass = character(),
   presso_global_p = numeric(),
-  presso_n_outliers = numeric()
+  presso_n_outliers = numeric(),
+  presso_outlier_corrected_beta = numeric(),
+  presso_outlier_corrected_se = numeric(),
+  presso_outlier_corrected_p = numeric()
 )
 
 # Define theme with Arial font
@@ -429,7 +435,8 @@ for (exp_type in exposures_to_run) {
         heterogeneity_significant = NA, pleiotropy_significant = NA, egger_intercept_pval = NA,
         steiger_pval = NA, steiger_correct_direction = NA,
         ivw_significant = NA, directionality_significant = NA, pleiotropy_pass = NA, three_filter_pass = NA,
-        presso_global_p = NA, presso_n_outliers = NA
+        presso_global_p = NA, presso_n_outliers = NA,
+        presso_outlier_corrected_beta = NA, presso_outlier_corrected_se = NA, presso_outlier_corrected_p = NA
       ))
       next
     }
@@ -462,7 +469,8 @@ for (exp_type in exposures_to_run) {
         heterogeneity_significant = NA, pleiotropy_significant = NA, egger_intercept_pval = NA,
         steiger_pval = NA, steiger_correct_direction = NA,
         ivw_significant = NA, directionality_significant = NA, pleiotropy_pass = NA, three_filter_pass = NA,
-        presso_global_p = NA, presso_n_outliers = NA
+        presso_global_p = NA, presso_n_outliers = NA,
+        presso_outlier_corrected_beta = NA, presso_outlier_corrected_se = NA, presso_outlier_corrected_p = NA
       ))
       next
     }
@@ -527,7 +535,8 @@ for (exp_type in exposures_to_run) {
         heterogeneity_significant = NA, pleiotropy_significant = NA, egger_intercept_pval = NA,
         steiger_pval = NA, steiger_correct_direction = NA,
         ivw_significant = NA, directionality_significant = NA, pleiotropy_pass = NA, three_filter_pass = NA,
-        presso_global_p = NA, presso_n_outliers = NA
+        presso_global_p = NA, presso_n_outliers = NA,
+        presso_outlier_corrected_beta = NA, presso_outlier_corrected_se = NA, presso_outlier_corrected_p = NA
       ))
       next
     }
@@ -704,12 +713,16 @@ for (exp_type in exposures_to_run) {
 
     cat("[", timestamp(), "] Three-filter: IVW=", ivw_significant, ", Direction=", directionality_significant, ", Pleiotropy=", pleiotropy_pass, ", Combined=", three_filter_pass, "\n")
 
-    # Check MR-PRESSO results
+    # Check MR-PRESSO results (including outlier-corrected estimates)
     presso_pval <- NA
     presso_outliers <- NA
+    presso_outlier_corrected_beta <- NA
+    presso_outlier_corrected_se <- NA
+    presso_outlier_corrected_p <- NA
     if (!is.null(presso) && length(presso) > 0) {
       tryCatch({
         presso_res <- presso[[1]]
+        presso_main <- presso[["MR-PRESSO results"]][["Main MR results"]]
         if (!is.null(presso_res) && is.data.frame(presso_res) && nrow(presso_res) > 0) {
           if ("MR.PRESSO.results.Global.Test.Pvalue" %in% colnames(presso_res)) {
             presso_pval <- safe_parse_pval(presso_res$MR.PRESSO.results.Global.Test.Pvalue[1])
@@ -720,7 +733,15 @@ for (exp_type in exposures_to_run) {
             presso_outliers <- suppressWarnings(as.numeric(presso_res$n_outliers[1]))
           }
         }
-      }, error = function(e) {})
+        # 提取离群校正后的估计（第二行为校正估计）
+        if (!is.null(presso_main) && is.data.frame(presso_main) && nrow(presso_main) >= 2) {
+          presso_outlier_corrected_beta <- suppressWarnings(as.numeric(presso_main$Beta[2]))
+          presso_outlier_corrected_se <- suppressWarnings(as.numeric(presso_main$SE[2]))
+          presso_outlier_corrected_p <- safe_parse_pval(presso_main$P-value[2])
+        }
+      }, error = function(e) {
+        cat("[", timestamp(), "] MR-PRESSO result extraction failed:", e$message, "\n")
+      })
     }
 
     analysis_summary <- rbind(analysis_summary, data.frame(
@@ -752,7 +773,10 @@ for (exp_type in exposures_to_run) {
       pleiotropy_pass = pleiotropy_pass,
       three_filter_pass = three_filter_pass,
       presso_global_p = presso_pval,
-      presso_n_outliers = presso_outliers
+      presso_n_outliers = presso_outliers,
+      presso_outlier_corrected_beta = presso_outlier_corrected_beta,
+      presso_outlier_corrected_se = presso_outlier_corrected_se,
+      presso_outlier_corrected_p = presso_outlier_corrected_p
     ))
 
     # 15. Generate plots
@@ -764,7 +788,7 @@ for (exp_type in exposures_to_run) {
       if (!is.null(p) && length(p) > 0) {
         p1 <- p[[1]] +
           scale_color_npg(palette = "nrc") +
-          theme_mr(base_size = 14, legend.position = "top") +
+          theme_mr(base_size = 12, legend.position = "top") +
           ggtitle("MR Scatter Plot") +
           theme(axis.title.y = element_text(size = 10, hjust = 0.5, family = "Liberation Sans")) +
           labs(y = "Effect on TBI")
@@ -818,7 +842,7 @@ for (exp_type in exposures_to_run) {
       if (!is.null(p) && length(p) > 0) {
         p1 <- p[[1]] +
           scale_color_npg(palette = "nrc") +
-          theme_mr(base_size = 14, legend.position = "top") +
+          theme_mr(base_size = 12, legend.position = "top") +
           ggtitle("MR Funnel Plot")
         num_prefix <- sprintf("%02d", exp_idx)
         showtext_begin()

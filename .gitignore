@@ -1,0 +1,13 @@
+# 本地与生成物不提交
+.claude/
+results/*
+!results/.gitkeep
+report/*
+!report/.gitkeep
+logs/*
+!logs/.gitkeep
+
+Rplots.pdf
+*.qs2
+*.qs
+.20*

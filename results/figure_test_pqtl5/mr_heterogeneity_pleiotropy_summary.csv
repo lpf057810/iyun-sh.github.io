@@ -1,4 +1,0 @@
-"exposure","outcome","Method","Heterogeneity_Q","Q_df","Q_P.value","Egger_intercept","SE","P.value"
-"A1BG","ebi-a-GCST90091033","MR Egger",9.4742,9,"0.3947",NA,NA,NA
-"A1BG","ebi-a-GCST90091033","Inverse variance weighted",11.7745,10,"0.3004",NA,NA,NA
-"A1BG","ebi-a-GCST90091033","MR Egger",NA,NA,NA,0.022556,0.015259,"0.1735"

@@ -318,35 +318,85 @@ cat("STEP 0: PROCESSING CANDIDATE GENE LIST\n")
 cat(rep("=", 60), "\n")
 
 
-# 1. 探索与重命名
+# 1. 智能识别基因列
 cat("\n1. Loading and inspecting the gene list...\n")
-# 测试运行：仅使用5个基因
-# Use command line argument or default
 if (is.null(opt$input)) {
   stop("Error: Input file is required. Use -i or --input to specify the gene list file.")
 }
-genes <- read.csv(opt$input)
+genes <- read.csv(opt$input, check.names = FALSE)
 
 cat("   Original dimensions:", nrow(genes), "rows,", ncol(genes), "columns\n")
 cat("   Original column names:", paste(colnames(genes), collapse = ", "), "\n")
 cat("   First few rows:\n")
 print(head(genes))
 
-# 智能重命名 - 处理单列和多列输入
-if (ncol(genes) == 1) {
-  # 单列输入：只有基因名，重命名为gene，添加id列
-  colnames(genes) <- "gene"
-  genes$id <- 1:nrow(genes)
-  cat("   ✓ Single column detected, renamed to 'gene', added id column\n")
-} else {
-  colnames(genes) <- c("id", "gene")
-  cat("   ✓ Columns renamed to: 'id', 'gene'\n")
+# 智能识别基因列：按优先级匹配列名，同时用内容验证
+gene_col <- NULL
+id_col   <- NULL
+gene_col_names <- c("gene", "symbol", "hgnc_symbol", "gene_symbol", "geneid",
+                    "entrez", "entrezid", "entrez_gene_id",
+                    "ensembl", "ensembl_id", "ensembl_gene_id")
+id_col_names <- c("id", "snp_id", "snpid", "rsid", "variant_id", "chr", "chromosome")
+
+for (nm in gene_col_names) {
+  hit <- which(tolower(colnames(genes)) == nm)
+  if (length(hit) > 0) { gene_col <- colnames(genes)[hit[1]]; break }
 }
+for (nm in id_col_names) {
+  hit <- which(tolower(colnames(genes)) == nm)
+  if (length(hit) > 0) { id_col <- colnames(genes)[hit[1]]; break }
+}
+
+# 备用策略：如果列名未匹配到，用内容验证（排除全数字列和过短列）
+if (is.null(gene_col)) {
+  for (i in seq_len(ncol(genes))) {
+    col_vals <- as.character(genes[[i]])
+    col_vals <- na.omit(col_vals)
+    if (length(col_vals) == 0) next
+    # 排除全数字列（序号列）或只有1-2字符的列
+    is_numeric <- all(grepl("^\\d+(\\.\\d+)?$", col_vals))
+    is_too_short <- all(nchar(col_vals) <= 2)
+    is_gene_like <- any(grepl("^[A-Z][A-Z0-9]{2,}$", toupper(col_vals)))
+    if (!is_numeric && !is_too_short && is_gene_like) {
+      gene_col <- colnames(genes)[i]
+      cat("   ✓ Gene column inferred by content validation: '", gene_col, "'\n", sep = "")
+      break
+    }
+  }
+}
+
+if (is.null(gene_col)) {
+  gene_col <- colnames(genes)[1]
+  if (ncol(genes) > 1) id_col <- colnames(genes)[2]
+  cat("   [WARN] No recognized gene column found. Using first column: '", gene_col, "'\n", sep = "")
+} else {
+  cat("   ✓ Gene column detected: '", gene_col, "'\n", sep = "")
+}
+if (!is.null(id_col)) {
+  cat("   ✓ ID column detected: '", id_col, "'\n", sep = "")
+}
+
+# 标准化列名
+if (gene_col != "gene") {
+  colnames(genes)[which(colnames(genes) == gene_col)] <- "gene"
+  gene_col <- "gene"
+}
+if (!is.null(id_col) && id_col != "id") {
+  colnames(genes)[which(colnames(genes) == id_col)] <- "id"
+  id_col <- "id"
+} else if (is.null(id_col) && ncol(genes) > 1) {
+  genes$id <- 1:nrow(genes)
+  cat("   ✓ Added auto-generated id column\n")
+}
+
+# 验证基因列包含有效标识符
+raw_gene_list <- unique(na.omit(genes$gene))
+cat("   Total unique identifiers:", length(raw_gene_list), "\n")
+sample_sample <- head(raw_gene_list, min(5, length(raw_gene_list)))
+cat("   Sample values:", paste(sample_sample, collapse = ", "), "\n")
 
 # 2. 标识符清洗与转换
 cat("\n2. Cleaning and converting gene identifiers to Ensembl ID...\n")
-raw_gene_list <- unique(na.omit(genes$gene))  # 改为使用"gene"列
-cat("   Total unique input identifiers:", length(raw_gene_list), "\n")
 
 # 判断输入ID类型
 sample_genes <- head(raw_gene_list, 10)
@@ -1061,7 +1111,7 @@ for (i in seq_along(exposure_id_list)) {
   cat("\nSTEP 9: Generating plots...\n")
 
   # 定义通用主题 (Arial字体)
-  theme_mr <- function(base_size = 14, legend.position = "right") {
+  theme_mr <- function(base_size = 12, legend.position = "right") {
     theme_bw(base_size = base_size) +
       theme(
         text = element_text(face = "bold", family = "Liberation Sans"),
@@ -1082,7 +1132,7 @@ for (i in seq_along(exposure_id_list)) {
     if (!is.null(p)) {
       p1 <- p[[1]] +
         scale_color_npg(palette = "nrc") +
-        theme_mr(base_size = 14, legend.position = "top") +
+        theme_mr(base_size = 12, legend.position = "top") +
         ggtitle("MR Scatter Plot")
 
       num_prefix <- sprintf("%02d", i)
@@ -1142,7 +1192,7 @@ for (i in seq_along(exposure_id_list)) {
     if (!is.null(p)) {
       p1 <- p[[1]] +
         scale_color_npg(palette = "nrc") +
-        theme_mr(base_size = 14, legend.position = "top") +
+        theme_mr(base_size = 12, legend.position = "top") +
         ggtitle("MR Funnel Plot")
 
       num_prefix <- sprintf("%02d", i)

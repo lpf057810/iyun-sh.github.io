@@ -93,7 +93,7 @@ library(MRPRESSO)
 library(ggsci)
 library(showtext)
 showtext_auto()
-showtext_opts(dpi = 96)
+showtext_opts(dpi = 300)
 font_add("Liberation Sans", regular = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", bold = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", italic = "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf", bolditalic = "/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf")
 library(clusterProfiler)
 
@@ -308,17 +308,78 @@ writeLines(config_lines, config_file)
 cat("[Config] Parameters saved to:", config_file, "\n")
 
 # ============================================================================
-# 步骤1: 读取候选基因列表
+# 步骤1: 读取候选基因列表（智能列识别）
 # ============================================================================
 cat("STEP 1: Loading candidate gene list...\n")
-# Use command line argument or default
 if (is.null(opt$input)) {
   stop("Error: Input file is required. Use -i or --input to specify the gene list file.")
 }
-genes <- read.csv(opt$input)
-colnames(genes) <- c("id","gene")
+genes <- read.csv(opt$input, check.names = FALSE)
+cat("  Original dimensions:", nrow(genes), "rows,", ncol(genes), "columns\n")
+cat("  Original column names:", paste(colnames(genes), collapse = ", "), "\n")
+cat("  First few rows:\n")
+print(head(genes))
+
+# 智能识别基因列
+gene_col <- NULL
+id_col   <- NULL
+gene_col_names <- c("gene", "symbol", "hgnc_symbol", "gene_symbol",
+                    "entrez", "entrezid", "entrez_gene_id",
+                    "ensembl", "ensembl_id", "ensembl_gene_id")
+id_col_names <- c("id", "snp_id", "snpid", "rsid", "variant_id")
+
+for (nm in gene_col_names) {
+  hit <- which(tolower(colnames(genes)) == nm)
+  if (length(hit) > 0) { gene_col <- colnames(genes)[hit[1]]; break }
+}
+for (nm in id_col_names) {
+  hit <- which(tolower(colnames(genes)) == nm)
+  if (length(hit) > 0) { id_col <- colnames(genes)[hit[1]]; break }
+}
+
+if (is.null(gene_col)) {
+  # 备用：用内容验证排除序号列
+  for (i in seq_len(ncol(genes))) {
+    col_vals <- as.character(genes[[i]])
+    col_vals <- na.omit(col_vals)
+    if (length(col_vals) == 0) next
+    is_numeric <- all(grepl("^\\d+(\\.\\d+)?$", col_vals))
+    is_too_short <- all(nchar(col_vals) <= 2)
+    is_gene_like <- any(grepl("^[A-Z][A-Z0-9]{2,}$", toupper(col_vals)))
+    if (!is_numeric && !is_too_short && is_gene_like) {
+      gene_col <- colnames(genes)[i]
+      cat("  ✓ Gene column inferred by content validation: '", gene_col, "'\n", sep = "")
+      break
+    }
+  }
+  if (is.null(gene_col)) {
+    gene_col <- colnames(genes)[1]
+    if (ncol(genes) > 1) id_col <- colnames(genes)[2]
+    cat("  [WARN] No recognized gene column found. Using first column: '", gene_col, "'\n", sep = "")
+  }
+} else {
+  cat("  ✓ Gene column detected: '", gene_col, "'\n", sep = "")
+}
+if (!is.null(id_col)) {
+  cat("  ✓ ID column detected: '", id_col, "'\n", sep = "")
+}
+
+# 标准化列名
+if (gene_col != "gene") {
+  colnames(genes)[which(colnames(genes) == gene_col)] <- "gene"
+  gene_col <- "gene"
+}
+if (!is.null(id_col) && id_col != "id") {
+  colnames(genes)[which(colnames(genes) == id_col)] <- "id"
+  id_col <- "id"
+} else if (is.null(id_col) && ncol(genes) > 1) {
+  genes$id <- 1:nrow(genes)
+  cat("  ✓ Added auto-generated id column\n")
+}
+
 candidate_genes <- unique(na.omit(genes$gene))
 cat("  Total candidate genes:", length(candidate_genes), "\n")
+cat("  Sample genes:", paste(head(candidate_genes, min(5, length(candidate_genes))), collapse = ", "), "\n")
 
 # ============================================================================
 # 步骤2: 扫描pQTL文件目录并匹配基因
@@ -942,7 +1003,7 @@ for (i in seq_along(matched_files)) {
     if (!is.null(p)) {
       p1 <- p[[1]] +
         scale_color_npg(palette = "nrc") +
-        theme_mr(base_size = 14, legend.position = "top") +
+        theme_mr(base_size = 12, legend.position = "top") +
         ggtitle("MR Scatter Plot")
 
       num_prefix <- sprintf("%02d", i)
@@ -998,7 +1059,7 @@ for (i in seq_along(matched_files)) {
     if (!is.null(p)) {
       p1 <- p[[1]] +
         scale_color_npg(palette = "nrc") +
-        theme_mr(base_size = 14, legend.position = "top") +
+        theme_mr(base_size = 12, legend.position = "top") +
         ggtitle("MR Funnel Plot")
 
       num_prefix <- sprintf("%02d", i)

@@ -1,4 +1,0 @@
-"Exposure","Outcome","Egger_intercept","Egger_intercept_pval","Pleiotropy_Significant"
-"ukb d 20480","severe traumatic brain injury, does not include concussion",0.0143000341120469,0.358500007474169,"NO"
-"ukb e 20523 AFR","severe traumatic brain injury, does not include concussion",0.000402141224159426,0.989338742475015,"NO"
-"ukb e 20523 CSA","severe traumatic brain injury, does not include concussion",-0.0113848316969104,0.430382351514698,"NO"

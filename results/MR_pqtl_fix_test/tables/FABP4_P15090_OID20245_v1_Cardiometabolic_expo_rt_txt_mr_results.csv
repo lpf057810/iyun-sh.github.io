@@ -1,2 +1,0 @@
-"id.exposure","id.outcome","outcome","exposure","method","nsnp","b","se","pval","lo_ci","up_ci","or","or_lci95","or_uci95","n_snps","pqtl_file"
-"FABP4","ebi-a-GCST90091033","ebi-a-GCST90091033","FABP4","Inverse variance weighted (fixed effects)",2,-0.458312902586102,0.146306121797959,0.00173288207257651,-0.745072901310102,-0.171552903862103,0.632349581428734,0.474699692448978,0.842355702971252,2,"FABP4_P15090_OID20245_v1_Cardiometabolic_expo_rt.txt"

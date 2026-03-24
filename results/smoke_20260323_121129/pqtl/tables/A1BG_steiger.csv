@@ -1,2 +1,0 @@
-"id.exposure","id.outcome","exposure","outcome","snp_r2.exposure","snp_r2.outcome","correct_causal_direction","steiger_pval"
-"A1BG","ebi-a-GCST90091033","A1BG","Nonalcoholic fatty liver disease || id:ebi-a-GCST90091033",0.00464123836965426,0.000260147732366086,TRUE,5.30730586569118e-21

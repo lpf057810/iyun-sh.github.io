@@ -1,3 +1,0 @@
-"id.exposure","id.outcome","outcome","exposure","method","Q","Q_df","Q_pval"
-"ukb-e-20523_AFR","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_AFR","MR Egger",1.37795249829515,7,0.986237007044452
-"ukb-e-20523_AFR","finn-b-TRAUMBRAIN_NONCONCUS","severe traumatic brain injury, does not include concussion || id:finn-b-TRAUMBRAIN_NONCONCUS","Physical violence by partner or ex-partner as an adult || id:ukb-e-20523_AFR","Inverse variance weighted",1.52425019974607,8,0.992297758835497

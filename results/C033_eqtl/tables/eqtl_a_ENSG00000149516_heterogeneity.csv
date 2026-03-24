@@ -1,3 +1,0 @@
-"id.exposure","id.outcome","outcome","exposure","method","Q","Q_df","Q_pval"
-"eqtl-a-ENSG00000149516","ebi-a-GCST90018894","Parkinson's disease || id:ebi-a-GCST90018894","eqtl-a-ENSG00000149516","MR Egger",18.2141943424406,24,0.792495906172517
-"eqtl-a-ENSG00000149516","ebi-a-GCST90018894","Parkinson's disease || id:ebi-a-GCST90018894","eqtl-a-ENSG00000149516","Inverse variance weighted",18.5210360135685,25,0.819489325359886

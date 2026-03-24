@@ -1,3 +1,0 @@
-"protein","n_snps","beta","se","p_value","OR","CI_95","method_used"
-"GGT1",21,0.1616,0.0413,"9e-05",1.175,"[1.084, 1.274]","Inverse variance weighted (fixed effects)"
-"FABP4",2,-0.4583,0.1463,"0.00173",0.632,"[0.475, 0.842]","Inverse variance weighted (fixed effects)"

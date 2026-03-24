@@ -1,7 +1,0 @@
-"Rank","Gene_Symbol","Ensembl_ID","n_SNPs","IVW_OR","IVW_OR_95CI","IVW_Pvalue","IVW_Significant","IVW_Direction","Heterogeneity_P","Pleiotropy_P","Steiger_Correct","Steiger_P"
-1,"GGT1","GGT1",21,1.175,"1.084-1.274","9e-05","YES","Risk","0.82","0.389654","TRUE","1.12e-53"
-2,"FABP4","FABP4",2,0.632,"0.475-0.842","0.00173","YES","Protective","0.887","NA","TRUE","0.00346"
-3,"GC","GC",60,1.015,"0.994-1.036","0.169","NO","Risk","0.145","0.310682","TRUE","<1e-99"
-4,"SMPD1","SMPD1",25,1.058,"0.966-1.159","0.221","NO","Risk","0.276","0.763851","TRUE","3.74e-45"
-5,"FABP3","FABP3",5,1.062,"0.817-1.379","0.655","NO","Risk","0.404","0.921986","TRUE","1.1e-06"
-6,"ACOT13","ACOT13",2,1.079,"0.738-1.577","0.696","NO","Risk","0.199","NA","TRUE","0.0042"
